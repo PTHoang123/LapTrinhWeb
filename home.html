@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+            rel="stylesheet"
+        />
+        <title>Foodyfi</title>
+    </head>
+    <body>
+        <!-- header -->
+        <header class="header">
+            <div class="container">
+                <div class="nav__wrapper">
+                    <div class="logo">
+                        <img
+                            class="logo-img"
+                            src="assets/—Pngtree—green sprout leaf logo design_7431531.png"
+                            alt="logo"
+                        />
+                        <h5>Cyclefy</h5>
+                    </div>
+
+                    <div class="navigation">
+                        <div class="menu">
+                            <a href="/" class="menu__item active__menu"
+                                >Trang chủ</a
+                            >
+                            <a href="/about" class="menu__item">Giới thiệu</a>
+                            <a href="/news" class="menu__item">Tin tức</a>
+                            <a href="/product" class="menu__item">Sản phẩm</a>
+                            <a href="/cart" class="menu__item">Giỏ hàng</a>
+                            <a href="/checkout" class="menu__item"
+                                >Thanh toán</a
+                            >
+                        </div>
+                    </div>
+
+                    <div class="nav__right">
+                        <span class="cart__icon">
+                            <i class="ri-shopping-cart-fill"></i>
+                            <span class="cart__badge">1</span>
+                        </span>
+                        <span class="user">
+                            <i class="ri-user-fill"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- hero section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero__grid">
+                    <div class="hero__content">
+                        <h5 class="hero__subtitle">
+                            Vì một môi trường xanh không có rác.
+                        </h5>
+                        <h1 class="hero__title">
+                            <span>Tạo ra </span>Một văn hoá tái chế và tái sử
+                            dụng, để mỗi sản phẩm được tái chế là một bước tiến
+                            cho môi trường.
+                        </h1>
+                        <button class="order__btn">
+                            <a href="/food" class="order__now"
+                                >Đặt sản phẩm ngay</a
+                            >
+                        </button>
+                    </div>
+                    <div class="hero__img">
+                        <img src="assets/hero-img.png" alt="delivery-guy" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="footer__logo">
+                <h5>Về chúng tôi</h5>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nesciunt pariatur accusamus
+                </p>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__title">Thời gian hoạt động</h5>
+                <div class="deliver__time-list">
+                    <div class="delivery__time-item">
+                        <span>Sunday - Thursday</span>
+                        <p>8:00am - 5:00pm</p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Friday - Saturday</span>
+                        <p>8:00am - 2:00pm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__title">Thông tin liên hệ</h5>
+                <div class="deliver__time-list">
+                    <div class="delivery__time-item">
+                        <p>
+                            địa chỉ 1: Khu phố 6, Phường Linh Trung, TP Thủ Đức
+                            ,TP. Hồ Chí Minh
+                        </p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <p>
+                            địa chỉ 2: Khoa công nghệ thông tin, Đại Học Nông
+                            Lâm TP.HCM.
+                        </p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Phone: 0123456789</span>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Email: example@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__title">Đăng ký</h5>
+                <div class="delivery__time-item">
+                    <p>Đăng ký để nhận thông tin mới nhất.</p>
+                </div>
+                <div class="newsletter">
+                    <input type="email" placeholder="Nhập email của bạn" />
+                    <span><i class="ri-send-plane-line"></i></span>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            (function () {
+                const header = document.querySelector(".header");
+                const onScroll = () => {
+                    if (window.scrollY > 80)
+                        header.classList.add("header__shrink");
+                    else header.classList.remove("header__shrink");
+                };
+                window.addEventListener("scroll", onScroll);
+                onScroll();
+            })();
+        </script>
+    </body>
+</html>
