@@ -181,6 +181,7 @@ a {
 }
 
 .footer {
+    height: 142px;
     padding: 50px 0;
     background: #88bf3d;
     display: flex;
