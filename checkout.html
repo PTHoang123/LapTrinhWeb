@@ -3,15 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./css/home.css" />
+        <title>Document</title>
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
             rel="stylesheet"
         />
-        <title>Foodyfi</title>
+        <link rel="stylesheet" href="./css/checkout.css" />
     </head>
     <body>
-        <!-- header -->
         <header class="header">
             <div class="container">
                 <div class="nav__wrapper">
@@ -53,32 +52,86 @@
                 </div>
             </div>
         </header>
-        <!-- hero section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero__grid">
-                    <div class="hero__content">
-                        <h5 class="hero__subtitle">
-                            Vì một môi trường xanh không có rác.
-                        </h5>
-                        <h1 class="hero__title">
-                            <span>Tạo ra </span>Một văn hoá tái chế và tái sử
-                            dụng, để mỗi sản phẩm được tái chế là một bước tiến
-                            cho môi trường.
-                        </h1>
-                        <button class="order__btn">
-                            <a href="/food" class="order__now"
-                                >Đặt sản phẩm ngay</a
-                            >
-                        </button>
+        <div class="banner-section">
+            <img class="banner-img" src="/assets/banner.png" alt="" />
+            <h2 class="title-banner">Thanh Toán</h2>
+        </div>
+        <div class="body">
+            <div class="form-checkout">
+                <h2 class="form-checkout__title">Thông tin liên hệ</h2>
+                <form action="" class="checkout-form">
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Nhập họ và tên"
+                        />
                     </div>
-                    <div class="hero__img">
-                        <img src="assets/hero-img.png" alt="delivery-guy" />
+                    <div class="form-group">
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Nhập email"
+                        />
                     </div>
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            placeholder="Nhập số điện thoại"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Nhập địa chỉ"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="postal"
+                            name="postal"
+                            placeholder="Nhập mã bưu chính"
+                        />
+                    </div>
+                    <button class="order__btn">
+                        <a class="order__now">Thanh toán</a>
+                    </button>
+                </form>
+            </div>
+            <div class="order-list">
+                <div class="order-item">
+                    <span>Sản phẩm 1</span>
+                    <span>100.000đ</span>
+                    <span>x1</span>
+                    <img
+                        class="product-img"
+                        src="/assets/product1.png"
+                        alt=""
+                    />
+                </div>
+                <div class="order-item">
+                    <span>Sản phẩm 2</span>
+                    <span>200.000đ</span>
+                    <span>x2</span>
+                    <img
+                        class="product-img"
+                        src="/assets/product2.png"
+                        alt=""
+                    />
+                </div>
+                <div class="order-total">
+                    <span>Tổng cộng:</span>
+                    <span>500.000đ</span>
                 </div>
             </div>
-        </section>
-        <!-- footer -->
+        </div>
         <footer class="footer">
             <div class="footer__logo">
                 <h5>Về chúng tôi</h5>
@@ -137,7 +190,6 @@
                 </div>
             </div>
         </footer>
-
         <script>
             (function () {
                 const header = document.querySelector(".header");
