@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="js/cart.js" defer></script>
     <link
         href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
         rel="stylesheet"
@@ -70,27 +71,49 @@
         </div>
 
         <div class="product-grid">
-            <div class="product-card">
-                <img src="assets/product1.jpg" alt="Sản phẩm 1" />
-                <h3>Chai nhựa tái chế</h3>
-                <p class="price">30.000đ</p>
-                <button class="order__btn">Thêm vào giỏ</button>
-            </div>
+  <div class="product-card" data-category="nhựa tái chế" data-price="30000">
+      <img src="images/2-150x150.png" alt="Sản phẩm 1" width="150"/>
+      <h3>Thùng rác nhựa tái chế</h3>
+      <p class="price">30.000đ</p>
+      <button class="order__btn">Thêm vào giỏ</button>
+  </div>
 
-            <div class="product-card">
-                <img src="assets/product2.jpg" alt="Sản phẩm 2" />
-                <h3>Túi giấy tái chế</h3>
-                <p class="price">25.000đ</p>
-                <button class="order__btn">Thêm vào giỏ</button>
-            </div>
+  <div class="product-card" data-category="nhựa tái chế" data-price="25000">
+      <img src="images/30-150x150.png" alt="Sản phẩm 2" width="150"/>
+      <h3>Bàn nhựa tái chế</h3>
+      <p class="price">25.000đ</p>
+      <button class="order__btn">Thêm vào giỏ</button>
+  </div>
 
-            <div class="product-card">
-                <img src="assets/product3.jpg" alt="Sản phẩm 3" />
-                <h3>Lọ thuỷ tinh cũ</h3>
-                <p class="price">40.000đ</p>
-                <button class="order__btn">Thêm vào giỏ</button>
-            </div>
-        </div>
+  <div class="product-card" data-category="giấy tái chế" data-price="40000">
+      <img src="images/IMG_5594-750x750.jpg" alt="Sản phẩm 3" width="150"/>
+      <h3>Kệ sách giấy</h3>
+      <p class="price">40.000đ</p>
+      <button class="order__btn">Thêm vào giỏ</button>
+  </div>
+
+  <div class="product-card" data-category="nhựa tái chế" data-price="30000">
+      <img src="images/6-150x150.png" alt="Sản phẩm 4" width="150"/>
+      <h3>Chậu cây nhựa tái chế</h3>
+      <p class="price">30.000đ</p>
+      <button class="order__btn">Thêm vào giỏ</button>
+  </div>
+
+  <div class="product-card" data-category="nhựa tái chế" data-price="25000">
+      <img src="images/38-150x150.png" alt="Sản phẩm 5" width="150"/>
+      <h3>Tủ giày nhựa tái chế</h3>
+      <p class="price">25.000đ</p>
+      <button class="order__btn">Thêm vào giỏ</button>
+  </div>
+
+  <div class="product-card" data-category="giấy tái chế" data-price="40000">
+      <img src="images/16-150x150.png" alt="Sản phẩm 6" width="150"/>
+      <h3>Hộp giấy</h3>
+      <p class="price">40.000đ</p>
+      <button class="order__btn">Thêm vào giỏ</button>
+  </div>
+</div>
+
     </section>
 
     <!-- Footer -->
@@ -124,6 +147,74 @@
     </footer>
 
     <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categorySelect = document.querySelectorAll(".filter-select")[0];
+  const sortSelect = document.querySelectorAll(".filter-select")[1];
+  const filterBtn = document.querySelector(".filter-section .order__btn");
+  const grid = document.querySelector(".product-grid");
+  const products = Array.from(document.querySelectorAll(".product-card"));
+
+  filterBtn.addEventListener("click", () => {
+    const category = categorySelect.value.toLowerCase();
+    const sort = sortSelect.value;
+
+    let filtered = [...products];
+
+    // Lọc theo loại
+    if (category !== "tất cả loại") {
+      filtered = filtered.filter(p => p.dataset.category === category);
+    }
+
+    // Sắp xếp
+    if (sort === "Giá tăng dần") {
+      filtered.sort((a, b) => a.dataset.price - b.dataset.price);
+    } else if (sort === "Giá giảm dần") {
+      filtered.sort((a, b) => b.dataset.price - a.dataset.price);
+    } else if (sort === "Tên A-Z") {
+      filtered.sort((a, b) =>
+        a.querySelector("h3").innerText.localeCompare(b.querySelector("h3").innerText)
+      );
+    }
+
+    // Cập nhật giao diện
+    grid.innerHTML = "";
+    filtered.forEach(p => grid.appendChild(p));
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const addButtons = document.querySelectorAll(".product-card .order__btn");
+
+  addButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".product-card");
+      const name = card.querySelector("h3").innerText;
+      const price = parseInt(card.dataset.price);
+      const image = card.querySelector("img").src;
+
+      // Lấy giỏ hàng hiện tại
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Kiểm tra xem sản phẩm đã tồn tại chưa
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, image, quantity: 1 });
+      }
+
+      // Lưu lại vào localStorage
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("✅ Đã thêm sản phẩm vào giỏ hàng!");
+    });
+  });
+});
+</script>
+
+
+    <script>
         (function () {
             const header = document.querySelector(".header");
             const onScroll = () => {
@@ -134,5 +225,6 @@
             onScroll();
         })();
     </script>
+
 </body>
 </html>
