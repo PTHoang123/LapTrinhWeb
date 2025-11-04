@@ -179,6 +179,12 @@ a {
     font-weight: 600;
     text-decoration: none;
     height: 40px;
+    margin-right: 8rem;
+}
+
+.order__btn-wrapper {
+    text-align: center;
+    margin-top: 20px;
 }
 
 .form-checkout {
@@ -214,13 +220,6 @@ input {
 input:focus {
     outline: none;
 }
-input::placeholder {
-    font-size: 1rem;
-    font-style: italic;
-    opacity: 1;
-    letter-spacing: 0.5px;
-}
-
 .form-checkout__title {
     font-size: 1.5rem;
     font-weight: 600;
@@ -244,6 +243,7 @@ input::placeholder {
     justify-content: center;
     gap: 6rem;
     align-items: center;
+    margin-top: 20px;
 }
 
 .footer__logo img {
@@ -318,4 +318,11 @@ input::placeholder {
 .newsletter i {
     font-size: 1.1rem;
     color: #fff;
+}
+
+input::placeholder {
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 1;
+    letter-spacing: 0.5px;
 }
