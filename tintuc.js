@@ -1,17 +1,17 @@
 // Danh sách tin tức (giả lập)
 const newsList = [
-    {
-        img: "assets/news1.jpg",
-        title: "Tái chế nhựa – xu hướng sống xanh năm 2025",
-        desc: "Nhựa tái chế đang trở thành lựa chọn hàng đầu trong các sản phẩm gia dụng.",
-        link: "#"
-    },
-    {
-        img: "assets/news2.jpg",
-        title: "5 cách sáng tạo để tái sử dụng chai nhựa",
-        desc: "Những mẹo nhỏ giúp bạn vừa tiết kiệm vừa bảo vệ môi trường.",
-        link: "#"
-    },
+  {
+    img: "assets/news1.jpg",
+    title: "Tái chế nhựa – xu hướng sống xanh năm 2025",
+    desc: "Nhựa tái chế đang trở thành lựa chọn hàng đầu trong các sản phẩm gia dụng.",
+    link: "baibao1.html"  // ✅ liên kết đến bài báo 1
+  },
+  {
+    img: "assets/news2.jpg",
+    title: "5 cách sáng tạo để tái sử dụng chai nhựa",
+    desc: "Những mẹo nhỏ giúp bạn vừa tiết kiệm vừa bảo vệ môi trường.",
+    link: "baibao2.html"  // ✅ liên kết đến bài báo 2
+  },
     {
         img: "assets/news3.jpg",
         title: "Học sinh NLU tiên phong trong dự án tái chế rác hữu cơ",
@@ -44,4 +44,5 @@ function subscribe() {
     } else {
         alert("Vui lòng nhập email hợp lệ.");
     }
+
 }
