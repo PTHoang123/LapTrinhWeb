@@ -3,55 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Câu hỏi thường gặp</title>
+    <title>FAQ - Câu hỏi thường gặp | Cyclefy</title>
     <link rel="stylesheet" href="faq.css">
+    <link rel="stylesheet" href="global.css">
 </head>
 
 <body>
 
-<!-- ===== HEADER nhóm trưởng đã làm ===== -->
-<header>
-    <div class="logo">EcoRecycle</div>
+
+<header class="header">
+    <div class="logo">
+        <img src="assets/logo.png" alt="Cyclefy Logo">
+        <h1>Cyclefy</h1>
+    </div>
     <nav>
-        <a href="home.html">Trang chủ</a>
-        <a href="gioithieu.html">Giới thiệu</a>
-        <a href="tintuc.html">Tin tức</a>
-        <a href="dichvu.html">Dịch vụ</a>
-        <a href="faq.html" class="active">FAQ</a>
+        <ul class="nav-links">
+            <li><a href="home.html">Trang chủ</a></li>
+            <li><a href="gioithieu.html">Giới thiệu</a></li>
+            <li><a href="tintuc.html">Tin tức</a></li>
+            <li><a href="dichvu.html">Dịch vụ</a></li>
+            <li><a href="faq.html" class="active">FAQ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="checkout.html">Thanh toán</a></li>
+        </ul>
     </nav>
 </header>
 
-<!-- ===== NỘI DUNG CHÍNH ===== -->
+<!-- ================= NỘI DUNG FAQ ================= -->
 <section class="faq-container">
 
-    <h1>Câu hỏi thường gặp (FAQ)</h1>
+    <h1 class="faq-title">Câu hỏi thường gặp (FAQ)</h1>
+    <p class="faq-intro">
+        Dưới đây là những câu hỏi phổ biến mà khách hàng thường đặt ra khi sử dụng sản phẩm tái chế của Cyclefy.
+        Hy vọng giúp bạn hiểu rõ hơn về chất lượng – dịch vụ – quy trình hoạt động của chúng tôi.
+    </p>
 
+    <img src="assets/faq-banner.jpg" alt="FAQ banner" class="faq-banner">
+
+    <!-- FAQ item -->
     <div class="faq-item">
         <h3 class="faq-question">1. Sản phẩm tái chế có bền không?</h3>
-        <p class="faq-answer">Các sản phẩm tái chế vẫn đảm bảo độ bền và chất lượng tương đương sản phẩm truyền thống.</p>
+        <p class="faq-answer">
+            Các sản phẩm tái chế của Cyclefy được xử lý qua quy trình chuẩn hóa, đảm bảo độ bền từ 1–5 năm tùy loại.
+            Vật liệu được chọn lọc và tái chế bằng công nghệ nhiệt – nén để tăng độ cứng và khả năng chống nước.
+        </p>
+        <img src="assets/faq1.jpg" class="faq-img" alt="Độ bền sản phẩm tái chế">
     </div>
 
     <div class="faq-item">
-        <h3 class="faq-question">2. Tôi có thể trả hàng không?</h3>
-        <p class="faq-answer">Bạn có thể đổi trả trong vòng 7 ngày nếu sản phẩm bị lỗi từ nhà sản xuất.</p>
+        <h3 class="faq-question">2. Tôi có thể đổi trả sản phẩm không?</h3>
+        <p class="faq-answer">
+            Hoàn toàn có! Bạn được phép đổi trả trong 7 ngày nếu sản phẩm gặp lỗi kỹ thuật hoặc không đúng mô tả.
+            Cyclefy cam kết hỗ trợ 100% chi phí đổi trả với quy trình cực kỳ nhanh chóng.
+        </p>
+        <img src="assets/faq2.jpg" class="faq-img" alt="Chính sách đổi trả">
     </div>
 
     <div class="faq-item">
         <h3 class="faq-question">3. Thanh toán có an toàn không?</h3>
-        <p class="faq-answer">Chúng tôi sử dụng chuẩn thanh toán bảo mật SSL để đảm bảo an toàn tuyệt đối.</p>
+        <p class="faq-answer">
+            Hệ thống thanh toán của chúng tôi được mã hóa bằng chuẩn SSL 256-bit, đảm bảo an toàn tuyệt đối.
+            Cyclefy hỗ trợ nhiều phương thức như Momo, VNPay, Visa, và thanh toán khi nhận hàng.
+        </p>
+        <img src="assets/faq3.jpg" class="faq-img" alt="Thanh toán an toàn">
     </div>
 
     <div class="faq-item">
-        <h3 class="faq-question">4. Bao lâu thì sản phẩm giao tới?</h3>
-        <p class="faq-answer">Từ 2–4 ngày nội thành và 3–7 ngày ngoại tỉnh.</p>
+        <h3 class="faq-question">4. Thời gian giao hàng là bao lâu?</h3>
+        <p class="faq-answer">
+            • Nội thành TP.HCM: 1–3 ngày <br>
+            • Ngoại tỉnh: 3–7 ngày <br>
+            • Các sản phẩm thủ công đặt riêng: 5–10 ngày <br>
+            Tất cả đơn hàng đều có mã theo dõi vận chuyển.
+        </p>
+        <img src="assets/faq4.jpg" class="faq-img" alt="Giao hàng">
+    </div>
+
+    <div class="faq-item">
+        <h3 class="faq-question">5. Tôi có thể đặt thiết kế theo yêu cầu không?</h3>
+        <p class="faq-answer">
+            Cyclefy hỗ trợ làm sản phẩm tái chế theo yêu cầu: vật trang trí, đồ dùng học tập, quà tặng, phụ kiện,...
+            Giá sẽ thay đổi tùy kích thước – vật liệu – độ phức tạp.
+        </p>
+        <img src="assets/custom.jpg" class="faq-img" alt="Thiết kế theo yêu cầu">
     </div>
 
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-    <p>© 2025 EcoRecycle – Bảo vệ môi trường từ những điều nhỏ nhất.</p>
+<footer class="footer">
+    <div class="footer__logo">
+        <h5>Về chúng tôi</h5>
+        <p>Cyclefy – nền tảng mang lại sản phẩm tái chế thân thiện với môi trường.</p>
+    </div>
+
+    <div class="footer__col">
+        <h5 class="footer__title">Thời gian hoạt động</h5>
+        <div class="deliver__time-list">
+            <div class="delivery__time-item">
+                <span>Chủ nhật - Thứ năm</span>
+                <p>8:00 - 17:00</p>
+            </div>
+            <div class="delivery__time-item">
+                <span>Thứ sáu - Thứ bảy</span>
+                <p>8:00 - 14:00</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer__col">
+        <h5 class="footer__title">Thông tin liên hệ</h5>
+        <div class="deliver__time-list">
+            <div class="delivery__time-item">
+                <p>Địa chỉ 1: Khu phố 6, Phường Linh Trung, TP Thủ Đức, TP.HCM</p>
+            </div>
+            <div class="delivery__time-item">
+                <p>Địa chỉ 2: Khoa CNTT, Đại học Nông Lâm TP.HCM</p>
+            </div>
+            <div class="delivery__time-item">
+                <span>Phone: 0123456789</span>
+            </div>
+            <div class="delivery__time-item">
+                <span>Email: example@gmail.com</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer__col">
+        <h5 class="footer__title">Đăng ký</h5>
+        <div class="delivery__time-item">
+            <p>Đăng ký để nhận thông tin mới nhất.</p>
+        </div>
+        <div class="newsletter">
+            <input type="email" placeholder="Nhập email của bạn" />
+            <span><i class="ri-send-plane-line"></i></span>
+        </div>
+    </div>
 </footer>
 
 </body>
 </html>
+
