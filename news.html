@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./css/categories.css" />
+        <link rel="stylesheet" href="./css/news.css" />
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -32,7 +32,9 @@
                             <a href="/about.html" class="menu__item"
                                 >Giới thiệu</a
                             >
-                            <a href="/news.html" class="menu__item">Tin tức</a>
+                            <a href="/baibao1.html" class="menu__item"
+                                >Tin tức</a
+                            >
                             <a href="categories.html" class="menu__item"
                                 >Danh mục</a
                             >
@@ -61,92 +63,94 @@
             </div>
         </header>
 
-        <!-- Categories section -->
-        <main class="categories-page">
+        <!-- News list section -->
+        <main class="news-page">
             <div class="container">
-                <section class="categories-hero">
-                    <h1 class="categories-title">Danh mục sản phẩm</h1>
-                    <p class="categories-subtitle">
-                        Chọn danh mục bạn quan tâm để xem các sản phẩm phù hợp
-                        cho khu vườn xanh của bạn.
+                <section class="news-hero">
+                    <h1 class="news-title">Tin tức & Bài viết</h1>
+                    <p class="news-subtitle">
+                        Cập nhật những tin tức mới nhất về nông nghiệp xanh, xu
+                        hướng trồng trọt và mẹo chăm sóc vườn.
                     </p>
                 </section>
 
-                <section class="categories-grid">
-                    <article class="category-card">
-                        <div class="category-icon category-icon--green">
-                            <i class="ri-shirt-line"></i>
-                        </div>
-                        <h3>Quần áo</h3>
-                        <p>
-                            Quần áo thân thiện với môi trường, thời trang bền
-                            vững.
-                        </p>
-                        <a href="product.html" class="category-link">
-                            Xem sản phẩm
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </article>
+                <section class="news-layout">
+                    <!-- Left: list of news -->
+                    <div class="news-list">
+                        <article class="news-item">
+                            <a href="baibao1.html" class="news-thumb">
+                                <img
+                                    src="images/IMG_5594-750x750.jpg"
+                                    alt="News"
+                                />
+                            </a>
+                            <div class="news-body">
+                                <a href="baibao1.html" class="news-item-title"
+                                    >Tái chế nhựa – xu hướng sống xanh năm
+                                    2025</a
+                                >
+                                 <p class="news-meta">
+                                    Đăng ngày: 12/11/2025
+                                </p>
+                                <p class="news-excerpt">
+                                    Trong năm 2025, việc tái chế nhựa tiếp tục
+                                    trở thành một xu hướng sống xanh được đông
+                                    đảo người dân lựa chọn. Sau nhiều năm chứng
+                                    kiến lượng rác thải nhựa tăng mạnh, ý thức
+                                    bảo vệ môi trường đã chuyển từ nhận thức
+                                    sang hành động thực tế.
+                                </p>
+                                <a href="baibao1.html" class="news-readmore">
+                                    Đọc tiếp
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </article>
 
-                    <article class="category-card">
-                        <div class="category-icon category-icon--orange">
-                            <i class="ri-sofa-line"></i>
-                        </div>
-                        <h3>Nội Thất</h3>
-                        <p>
-                            Nội thất xanh mát, trang trí không gian sống thêm,
-                            tạo cảm giác thư giãn.
-                        </p>
-                        <a href="product.html" class="category-link">
-                            Xem sản phẩm
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </article>
+                        <article class="news-item">
+                            <a href="baibao2.html" class="news-thumb">
+                                <img src="images/16-150x150.png" alt="News" />
+                            </a>
+                            <div class="news-body">
+                                <a href="baibao2.html" class="news-item-title"
+                                    >5 cách sáng tạo để tái sử dụng chai nhựa</a
+                                >
+                                <p class="news-meta">
+                                    Đăng ngày: 12/11/2025
+                                </p>
+                                <p class="news-excerpt">
+                                    Tìm hiểu 5 cách sáng tạo để tái sử dụng chai
+                                    nhựa trong cuộc sống hàng ngày, giúp bảo vệ
+                                    môi trường và tiết kiệm chi phí.
+                                </p>
+                                <a href="baibao2.html" class="news-readmore">
+                                    Đọc tiếp
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </article>
 
-                    <article class="category-card">
-                        <div class="category-icon category-icon--blue">
-                            <i class="ri-tools-line"></i>
-                        </div>
-                        <h3>Dụng cụ</h3>
-                        <p>
-                            Bộ dụng cụ tiện lợi, bền chắc, thân thiện với môi
-                            trường
-                        </p>
-                        <a href="product.html" class="category-link">
-                            Xem sản phẩm
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </article>
 
-                    <article class="category-card">
-                        <div class="category-icon category-icon--yellow">
-                            <i class="ri-shopping-basket-line"></i>
+                    <!-- Right: sidebar -->
+                    <aside class="news-sidebar">
+                        <div class="news-widget">
+                            <h3 class="news-widget-title">Bài viết nổi bật</h3>
+                            <ul class="news-widget-list">
+                                <li>
+                                    <a href="baibao1.html"
+                                        >5 tips chăm sóc vườn xanh bền vững tại
+                                        nhà</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="baibao2.html"
+                                        >Lợi ích của phân bón hữu cơ đối với đất
+                                        trồng</a
+                                    >
+                                </li>
+                            </ul>
                         </div>
-                        <h3>Giỏ & Túi Sách</h3>
-                        <p>
-                            Giỏ và túi sách thân thiện với môi trường, giúp bạn
-                            mang theo đồ dùng một cách tiện lợi và bền vững.
-                        </p>
-                        <a href="product.html" class="category-link">
-                            Xem sản phẩm
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </article>
-
-                    <article class="category-card">
-                        <div class="category-icon category-icon--purple">
-                            <i class="ri-plant-line"></i>
-                        </div>
-                        <h3>Cây cảnh & phụ kiện</h3>
-                        <p>
-                            Cây cảnh, chậu, phụ kiện trang trí giúp không gian
-                            thêm xanh mát.
-                        </p>
-                        <a href="product.html" class="category-link">
-                            Xem sản phẩm
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </article>
+                    </aside>
                 </section>
             </div>
         </main>

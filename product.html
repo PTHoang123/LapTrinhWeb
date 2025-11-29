@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="product.css" />
+        <link rel="stylesheet" href="css/product.css" />
         <script src="js/cart.js" defer></script>
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
@@ -27,20 +27,25 @@
 
                     <div class="navigation">
                         <div class="menu">
-                            <a href="home.html" class="menu__item">Trang chủ</a>
-                            <a href="about.html" class="menu__item"
+                            <a href="home.html" class="menu__item active__menu"
+                                >Trang chủ</a
+                            >
+                            <a href="/about.html" class="menu__item"
                                 >Giới thiệu</a
                             >
-                            <a href="news.html" class="menu__item">Tin tức</a>
-                            <a
-                                href="product.html"
-                                class="menu__item active__menu"
+                            <a href="/news.html" class="menu__item">Tin tức</a>
+                            <a href="categories.html" class="menu__item"
+                                >Danh mục</a
+                            >
+                            <a href="product.html" class="menu__item"
                                 >Sản phẩm</a
                             >
-                            <a href="cart.html" class="menu__item">Giỏ hàng</a>
-                            <a href="checkout.html" class="menu__item"
+                            <a href="/cart.html" class="menu__item">Giỏ hàng</a>
+
+                            <a href="/checkout.html" class="menu__item"
                                 >Thanh toán</a
                             >
+                            <a href="/faq.html" class="menu__item">FAQ</a>
                         </div>
                     </div>
 
@@ -59,24 +64,28 @@
 
         <!-- Danh sách sản phẩm -->
         <section class="container" style="margin-top: 120px">
-            <h2 class="section__title">Danh sách sản phẩm</h2>
-
-            <div class="filter-section">
-                <select class="filter-select">
-                    <option>Tất cả loại</option>
-                    <option>Nhựa tái chế</option>
-                    <option>Giấy tái chế</option>
-                    <option>Kim loại tái chế</option>
-                </select>
-
-                <select class="filter-select">
-                    <option>Sắp xếp theo</option>
-                    <option>Giá tăng dần</option>
-                    <option>Giá giảm dần</option>
-                    <option>Tên A-Z</option>
-                </select>
-                <button class="order__btn">Lọc</button>
-            </div>
+            <section class="product-filters">
+                <div class="product-filters-left">
+                    <input
+                        type="text"
+                        class="product-search-input"
+                        placeholder="Tìm theo tên sản phẩm..."
+                    />
+                    <select class="product-select">
+                        <option value="">Tất cả danh mục</option>
+                        <option value="phan-bon">Phân bón hữu cơ</option>
+                        <option value="hat-giong">Hạt giống</option>
+                        <option value="dung-cu">Dụng cụ làm vườn</option>
+                    </select>
+                </div>
+                <div class="product-filters-right">
+                    <select class="product-select">
+                        <option value="">Sắp xếp</option>
+                        <option value="name_asc">Tên A → Z</option>
+                        <option value="name_desc">Tên Z → A</option>
+                    </select>
+                </div>
+            </section>
 
             <div class="product-grid">
                 <div

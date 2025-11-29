@@ -181,6 +181,7 @@ a {
 }
 
 .footer {
+    height: 142px;
     padding: 50px 0;
     background: #88bf3d;
     display: flex;
@@ -325,7 +326,7 @@ a {
 
 /* Nút thêm vào giỏ */
 .product-card .order__btn {
-    background-color: #28a745;
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -336,7 +337,7 @@ a {
 }
 
 .product-card .order__btn:hover {
-    background-color: #28a745;
+    background-color: #0056b3;
 }
 
 /* Responsive: Khi màn hình nhỏ thì giảm số cột */

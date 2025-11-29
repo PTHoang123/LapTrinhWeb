@@ -1,142 +1,186 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới thiệu | Cyclefy</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Giới thiệu | Cyclefy</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+            rel="stylesheet"
+        />
+        <!-- Liên kết CSS -->
+        <link rel="stylesheet" href="style.css" />
+        <!-- CSS chung của nhóm -->
+        <link rel="stylesheet" href="about.css" />
+        <!-- CSS riêng của trang giới thiệu -->
+    </head>
 
-    <!-- Liên kết CSS -->
-    <link rel="stylesheet" href="style.css"> <!-- CSS chung của nhóm -->
-    <link rel="stylesheet" href="about.css"> <!-- CSS riêng của trang giới thiệu -->
-</head>
+    <body>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container">
+                <div class="nav__wrapper">
+                    <div class="logo">
+                        <img
+                            class="logo-img"
+                            src="assets/—Pngtree—green sprout leaf logo design_7431531.png"
+                            alt="logo"
+                        />
+                        <h5>Cyclefy</h5>
+                    </div>
 
-<body>
-<!-- HEADER -->
-<header class="header">
-    <div class="container">
-        <div class="nav__wrapper">
-            <div class="logo">
-                <img
-                        class="logo-img"
-                        src="assets/—Pngtree—green sprout leaf logo design_7431531.png"
-                        alt="logo"
-                />
-                <h5>Cyclefy</h5>
+                    <div class="navigation">
+                        <div class="menu">
+                            <a href="home.html" class="menu__item active__menu"
+                                >Trang chủ</a
+                            >
+                            <a href="/about.html" class="menu__item"
+                                >Giới thiệu</a
+                            >
+                            <a href="/news.html" class="menu__item">Tin tức</a>
+                            <a href="categories.html" class="menu__item"
+                                >Danh mục</a
+                            >
+                            <a href="product.html" class="menu__item"
+                                >Sản phẩm</a
+                            >
+                            <a href="/cart.html" class="menu__item">Giỏ hàng</a>
+
+                            <a href="/checkout.html" class="menu__item"
+                                >Thanh toán</a
+                            >
+                            <a href="/faq.html" class="menu__item">FAQ</a>
+                        </div>
+                    </div>
+
+                    <div class="nav__right">
+                        <span class="cart__icon">
+                            <i class="ri-shopping-cart-fill"></i>
+                            <span class="cart__badge">1</span>
+                        </span>
+                        <span class="user">
+                            <i class="ri-user-fill"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- PHẦN GIỚI THIỆU -->
+        <section class="intro">
+            <div class="intro-text">
+                <h2>Về Cyclefy</h2>
+                <p>
+                    <strong>Cyclefy</strong> là nền tảng thương mại điện tử cung
+                    cấp các sản phẩm tái chế và thân thiện với môi trường. Chúng
+                    tôi tin rằng việc tái sử dụng và tái chế không chỉ giúp giảm
+                    thiểu rác thải mà còn truyền cảm hứng cho lối sống xanh,
+                    sáng tạo và bền vững.
+                </p>
+                <p>
+                    Ra đời từ dự án môn
+                    <strong>Lập Trình Web – Đại học Nông Lâm TP.HCM</strong>,
+                    Cyclefy hướng tới việc nâng cao nhận thức về bảo vệ môi
+                    trường thông qua thương mại điện tử xanh.
+                </p>
+            </div>
+            <div class="intro-img">
+                <img src="assets/hero-img.png" alt="Recycle Image" />
+            </div>
+        </section>
+
+        <!-- SỨ MỆNH - TẦM NHÌN -->
+        <section class="mission">
+            <h2>Sứ mệnh & Tầm nhìn</h2>
+            <div class="mission-list">
+                <div class="mission-item fade-in">
+                    <img src="assets/icon-earth.png" alt="Bảo vệ môi trường" />
+                    <h3>Bảo vệ môi trường</h3>
+                    <p>
+                        Khuyến khích người tiêu dùng sử dụng sản phẩm thân thiện
+                        và giảm thiểu rác thải nhựa.
+                    </p>
+                </div>
+                <div class="mission-item fade-in">
+                    <img
+                        src="assets/icon-innovation.png"
+                        alt="Đổi mới & Sáng tạo"
+                    />
+                    <h3>Đổi mới & Sáng tạo</h3>
+                    <p>
+                        Tạo ra những sản phẩm tái chế độc đáo, vừa hữu ích vừa
+                        mang tính thẩm mỹ cao.
+                    </p>
+                </div>
+                <div class="mission-item fade-in">
+                    <img src="assets/icon-community.png" alt="Cộng đồng xanh" />
+                    <h3>Cộng đồng xanh</h3>
+                    <p>
+                        Xây dựng cộng đồng người tiêu dùng và nhà sản xuất cùng
+                        chung tay vì môi trường bền vững.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer__logo">
+                <h5>Về chúng tôi</h5>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nesciunt pariatur accusamus.
+                </p>
             </div>
 
-            <div class="navigation">
-                <div class="menu">
-                    <a href="home.html" class="menu__item">Trang chủ</a>
-                    <a href="about.html" class="menu__item active__menu">Giới thiệu</a>
-                    <a href="news.html" class="menu__item">Tin tức</a>
-                    <a href="product.html" class="menu__item">Sản phẩm</a>
-                    <a href="cart.html" class="menu__item">Giỏ hàng</a>
-                    <a href="checkout.html" class="menu__item">Thanh toán</a>
+            <div class="footer__col">
+                <h5 class="footer__title">Thời gian hoạt động</h5>
+                <div class="deliver__time-list">
+                    <div class="delivery__time-item">
+                        <span>Chủ nhật - Thứ năm</span>
+                        <p>8:00 - 17:00</p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Thứ sáu - Thứ bảy</span>
+                        <p>8:00 - 14:00</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="nav__right">
-                <span class="cart__icon">
-                    <i class="ri-shopping-cart-fill"></i>
-                    <span class="cart__badge">1</span>
-                </span>
-                <span class="user">
-                    <i class="ri-user-fill"></i>
-                </span>
+            <div class="footer__col">
+                <h5 class="footer__title">Thông tin liên hệ</h5>
+                <div class="deliver__time-list">
+                    <div class="delivery__time-item">
+                        <p>
+                            Địa chỉ 1: Khu phố 6, Phường Linh Trung, TP Thủ Đức,
+                            TP.HCM
+                        </p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <p>Địa chỉ 2: Khoa CNTT, Đại học Nông Lâm TP.HCM</p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Phone: 0123456789</span>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Email: example@gmail.com</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</header>
 
-<!-- PHẦN GIỚI THIỆU -->
-<section class="intro">
-    <div class="intro-text">
-        <h2>Về Cyclefy</h2>
-        <p><strong>Cyclefy</strong> là nền tảng thương mại điện tử cung cấp các sản phẩm tái chế và thân thiện với môi trường. Chúng tôi tin rằng việc tái sử dụng và tái chế không chỉ giúp giảm thiểu rác thải mà còn truyền cảm hứng cho lối sống xanh, sáng tạo và bền vững.</p>
-        <p>Ra đời từ dự án môn <strong>Lập Trình Web – Đại học Nông Lâm TP.HCM</strong>, Cyclefy hướng tới việc nâng cao nhận thức về bảo vệ môi trường thông qua thương mại điện tử xanh.</p>
-    </div>
-    <div class="intro-img">
-        <img src="assets/hero-img.png" alt="Recycle Image">
-    </div>
-</section>
-
-<!-- SỨ MỆNH - TẦM NHÌN -->
-<section class="mission">
-    <h2>Sứ mệnh & Tầm nhìn</h2>
-    <div class="mission-list">
-        <div class="mission-item fade-in">
-            <img src="assets/icon-earth.png" alt="Bảo vệ môi trường">
-            <h3>Bảo vệ môi trường</h3>
-            <p>Khuyến khích người tiêu dùng sử dụng sản phẩm thân thiện và giảm thiểu rác thải nhựa.</p>
-        </div>
-        <div class="mission-item fade-in">
-            <img src="assets/icon-innovation.png" alt="Đổi mới & Sáng tạo">
-            <h3>Đổi mới & Sáng tạo</h3>
-            <p>Tạo ra những sản phẩm tái chế độc đáo, vừa hữu ích vừa mang tính thẩm mỹ cao.</p>
-        </div>
-        <div class="mission-item fade-in">
-            <img src="assets/icon-community.png" alt="Cộng đồng xanh">
-            <h3>Cộng đồng xanh</h3>
-            <p>Xây dựng cộng đồng người tiêu dùng và nhà sản xuất cùng chung tay vì môi trường bền vững.</p>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer__logo">
-        <h5>Về chúng tôi</h5>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Nesciunt pariatur accusamus.
-        </p>
-    </div>
-
-    <div class="footer__col">
-        <h5 class="footer__title">Thời gian hoạt động</h5>
-        <div class="deliver__time-list">
-            <div class="delivery__time-item">
-                <span>Chủ nhật - Thứ năm</span>
-                <p>8:00 - 17:00</p>
+            <div class="footer__col">
+                <h5 class="footer__title">Đăng ký</h5>
+                <div class="delivery__time-item">
+                    <p>Đăng ký để nhận thông tin mới nhất.</p>
+                </div>
+                <div class="newsletter">
+                    <input type="email" placeholder="Nhập email của bạn" />
+                    <span><i class="ri-send-plane-line"></i></span>
+                </div>
             </div>
-            <div class="delivery__time-item">
-                <span>Thứ sáu - Thứ bảy</span>
-                <p>8:00 - 14:00</p>
-            </div>
-        </div>
-    </div>
+        </footer>
 
-    <div class="footer__col">
-        <h5 class="footer__title">Thông tin liên hệ</h5>
-        <div class="deliver__time-list">
-            <div class="delivery__time-item">
-                <p>Địa chỉ 1: Khu phố 6, Phường Linh Trung, TP Thủ Đức, TP.HCM</p>
-            </div>
-            <div class="delivery__time-item">
-                <p>Địa chỉ 2: Khoa CNTT, Đại học Nông Lâm TP.HCM</p>
-            </div>
-            <div class="delivery__time-item">
-                <span>Phone: 0123456789</span>
-            </div>
-            <div class="delivery__time-item">
-                <span>Email: example@gmail.com</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer__col">
-        <h5 class="footer__title">Đăng ký</h5>
-        <div class="delivery__time-item">
-            <p>Đăng ký để nhận thông tin mới nhất.</p>
-        </div>
-        <div class="newsletter">
-            <input type="email" placeholder="Nhập email của bạn" />
-            <span><i class="ri-send-plane-line"></i></span>
-        </div>
-    </div>
-</footer>
-
-<!-- Liên kết JS -->
-<script src="about.js"></script>
-</body>
+        <!-- Liên kết JS -->
+        <script src="about.js"></script>
+    </body>
 </html>
