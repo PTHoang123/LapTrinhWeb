@@ -254,3 +254,9 @@ VALUES (?, 'pending', ?, ?, ?, ?);
 /*15. Thêm sản phẩm vào đơn hàng*/
 INSERT INTO Order_Item (order_id, product_id, variant_id, unit_price, quantity, total_price)
 VALUES (?, ?, ?, ?, ?, ?);
+
+/*16. Xem chi tiết đơn hàng*/
+SELECT o.*, oi.product_id, oi.variant_id, oi.quantity, oi.total_price
+FROM `Order` o
+JOIN Order_Item oi ON o.order_id = oi.order_id
+WHERE o.order_id = ?;
