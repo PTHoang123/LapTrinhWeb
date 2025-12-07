@@ -203,3 +203,13 @@ SELECT u.user_id, u.email, a.full_name, a.phone, a.city, a.street
 FROM User u
 LEFT JOIN User_Address a ON u.user_id = a.user_id
 WHERE u.user_id = ?;
+
+/*6. Thêm địa chỉ giao hàng*/
+INSERT INTO User_Address (user_id, full_name, phone, city, street, state, country, postal_code)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+/*7. Lấy danh sách sản phẩm*/
+SELECT p.product_id, p.name, p.price, p.slug, c.name AS category
+FROM Products p
+LEFT JOIN Categories c ON p.category_id = c.category_id
+WHERE p.status = 'active';
