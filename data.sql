@@ -213,3 +213,10 @@ SELECT p.product_id, p.name, p.price, p.slug, c.name AS category
 FROM Products p
 LEFT JOIN Categories c ON p.category_id = c.category_id
 WHERE p.status = 'active';
+
+/*8. Lấy chi tiết sản phẩm*/
+SELECT p.*, pv.variant_id, pv.color, pv.extra_price, pi.img_url
+FROM Products p
+LEFT JOIN Products_variants pv ON p.product_id = pv.product_id
+LEFT JOIN Products_img pi ON pv.variant_id = pi.variant_id
+WHERE p.product_id = ?;
