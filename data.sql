@@ -220,3 +220,8 @@ FROM Products p
 LEFT JOIN Products_variants pv ON p.product_id = pv.product_id
 LEFT JOIN Products_img pi ON pv.variant_id = pi.variant_id
 WHERE p.product_id = ?;
+
+/*9. Lấy tồn kho của từng biến thể*/
+SELECT stock_qty
+FROM Inventory
+WHERE variant_id = ?;
