@@ -260,3 +260,13 @@ SELECT o.*, oi.product_id, oi.variant_id, oi.quantity, oi.total_price
 FROM `Order` o
 JOIN Order_Item oi ON o.order_id = oi.order_id
 WHERE o.order_id = ?;
+
+/*17. Xem lịch sử mua hàng của user*/
+SELECT *
+FROM `Order`
+WHERE user_id = ?
+ORDER BY created_at DESC;
+
+/*18. Thêm đánh giá sản phẩm*/
+INSERT INTO product_review (product_id, user_id, rating, comment)
+VALUES (?, ?, ?, ?);
