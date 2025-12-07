@@ -225,3 +225,24 @@ WHERE p.product_id = ?;
 SELECT stock_qty
 FROM Inventory
 WHERE variant_id = ?;
+
+/*10. Lấy giỏ hàng của user*/
+SELECT ci.cart_item_id, ci.quantity, ci.unit_price, pv.color, p.name
+FROM Cart c
+JOIN Cart_Item ci ON c.cart_id = ci.cart_id
+JOIN Products_variants pv ON ci.variant_id = pv.variant_id
+JOIN Products p ON pv.product_id = p.product_id
+WHERE c.user_id = ?;
+
+/*11. Thêm sản phẩm vào giỏ*/
+INSERT INTO Cart_Item (cart_id, product_id, variant_id, quantity, unit_price)
+VALUES (?, ?, ?, ?, ?);
+
+/*12. Cập nhật số lượng trong giỏ*/
+UPDATE Cart_Item
+SET quantity = ?
+WHERE cart_item_id = ?;
+
+/*13. Xoá sản phẩm khỏi giỏ*/
+DELETE FROM Cart_Item
+WHERE cart_item_id = ?;
