@@ -246,3 +246,11 @@ WHERE cart_item_id = ?;
 /*13. Xoá sản phẩm khỏi giỏ*/
 DELETE FROM Cart_Item
 WHERE cart_item_id = ?;
+
+/*14. Tạo đơn hàng*/
+INSERT INTO `Order` (user_id, status, shipping_fee, tax_total, total_amount, shipping_address)
+VALUES (?, 'pending', ?, ?, ?, ?);
+
+/*15. Thêm sản phẩm vào đơn hàng*/
+INSERT INTO Order_Item (order_id, product_id, variant_id, unit_price, quantity, total_price)
+VALUES (?, ?, ?, ?, ?, ?);
