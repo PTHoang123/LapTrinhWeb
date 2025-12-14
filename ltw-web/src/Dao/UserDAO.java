@@ -41,4 +41,16 @@ public static boolean register(String fullname, String email, String password) {
         return false;
     }
 }
+
+public static boolean updatePassword(String email, String password) {
+    String sql = "UPDATE users SET password=? WHERE email=?";
+    try (Connection con = DBConnect.getConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, password);
+        ps.setString(2, email);
+        return ps.executeUpdate() > 0;
+    } catch (Exception e) {
+        return false;
+    }
+}
 }
