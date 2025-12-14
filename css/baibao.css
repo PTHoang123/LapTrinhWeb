@@ -1,4 +1,10 @@
-/* === CSS dành riêng cho các bài báo === */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 .article-container {
     padding: 60px 15%;
     background-color: #f9fbe7;
@@ -48,3 +54,4 @@
     from {opacity: 0; transform: translateY(30px);}
     to {opacity: 1; transform: translateY(0);}
 }
+
