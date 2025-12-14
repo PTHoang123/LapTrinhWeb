@@ -28,4 +28,17 @@ e.printStackTrace();
 }
 return null;
 }
+
+public static boolean register(String fullname, String email, String password) {
+    String sql = "INSERT INTO users(fullname,email,password) VALUES(?,?,?)";
+    try (Connection con = DBConnect.getConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, fullname);
+        ps.setString(2, email);
+        ps.setString(3, password);
+        return ps.executeUpdate() > 0;
+    } catch (Exception e) {
+        return false;
+    }
+}
 }
