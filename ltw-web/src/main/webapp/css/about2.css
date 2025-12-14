@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: #f9f9f9;
+}
+
+header {
+    background: #fff;
+    border-bottom: 2px solid #77b300;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+.logo span {
+    color: #77b300;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+nav a:hover, nav a.active {
+    color: #77b300;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: #77b300;
+    margin-bottom: 15px;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.img-wrap {
+    text-align: center;
+    margin: 20px 0;
+}
+.img-wrap img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+ul li::before {
+    content: "✔ ";
+    color: #77b300;
+}
+
+.members {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+.member {
+    flex: 1 1 30%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+.member img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background: #77b300;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.team-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.team-member {
+    text-align: center;
+    width: 250px;
+}
+
+.team-member img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+
+.commit ul {
+    margin-left: 20px;
+    line-height: 1.8;
+}
+
+.link-section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.back-link {
+    color: #77b300;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,36 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%
+String ctx = request.getContextPath(); %>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Forgot Password</title>
+        <link rel="stylesheet" href="/css/forgot.css" />
+    </head>
+    <body>
+        <div class="glass-container">
+            <h2>Forgot Password</h2>
+            <form>
+                <div class="input-group">
+                    <input type="email" required />
+                    <label>Email Address</label>
+                </div>
+                <p class="info-text">
+                    Enter your registered email address and we’ll send you a
+                    link to reset your password.
+                </p>
+                <button type="submit" class="forgot-btn">
+                    Send Reset Link
+                </button>
+
+                <div class="back-link">
+                    <p>
+                        Remember your password?
+                        <a href="<%= ctx %>/login.jsp">Back to Login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

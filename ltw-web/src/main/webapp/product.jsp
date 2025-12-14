@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%
 String ctx = request.getContextPath(); %>
 <!DOCTYPE html>
-
 <html lang="vi">
     <head>
         <meta charset="UTF-8" />
@@ -16,6 +15,7 @@ String ctx = request.getContextPath(); %>
         />
         <title>Sản phẩm | Cyclefy</title>
     </head>
+
     <body>
         <!-- Header -->
         <header class="header">
@@ -24,7 +24,7 @@ String ctx = request.getContextPath(); %>
                     <div class="logo">
                         <img
                             class="logo-img"
-                            src="${pageContext.request.contextPath}/assets/—Pngtree—green sprout leaf logo design_7431531.png"
+                            src="<%= ctx %>/assets/—Pngtree—green sprout leaf logo design_7431531.png"
                             alt="logo"
                         />
                         <h5>Cyclefy</h5>
@@ -32,44 +32,32 @@ String ctx = request.getContextPath(); %>
 
                     <div class="navigation">
                         <div class="menu">
-                            <a
-                                href="${pageContext.request.contextPath}/home.jsp"
-                                class="menu__item"
+                            <a href="<%= ctx %>/home.jsp" class="menu__item"
                                 >Trang chủ</a
                             >
-                            <a
-                                href="${pageContext.request.contextPath}/about.jsp"
-                                class="menu__item"
+                            <a href="<%= ctx %>/about.jsp" class="menu__item"
                                 >Giới thiệu</a
                             >
-                            <a
-                                href="${pageContext.request.contextPath}/news.jsp"
-                                class="menu__item"
+                            <a href="<%= ctx %>/news.jsp" class="menu__item"
                                 >Tin tức</a
                             >
                             <a
-                                href="${pageContext.request.contextPath}/categories.jsp"
+                                href="<%= ctx %>/categories.jsp"
                                 class="menu__item"
                                 >Danh mục</a
                             >
                             <a
-                                href="${pageContext.request.contextPath}/product.jsp"
+                                href="<%= ctx %>/product.jsp"
                                 class="menu__item active__menu"
                                 >Sản phẩm</a
                             >
-                            <a
-                                href="${pageContext.request.contextPath}/cart.jsp"
-                                class="menu__item"
+                            <a href="<%= ctx %>/cart.jsp" class="menu__item"
                                 >Giỏ hàng</a
                             >
-                            <a
-                                href="${pageContext.request.contextPath}/checkout.jsp"
-                                class="menu__item"
+                            <a href="<%= ctx %>/checkout.jsp" class="menu__item"
                                 >Thanh toán</a
                             >
-                            <a
-                                href="${pageContext.request.contextPath}/faq.jsp"
-                                class="menu__item"
+                            <a href="<%= ctx %>/faq.jsp" class="menu__item"
                                 >FAQ</a
                             >
                         </div>
@@ -121,7 +109,7 @@ String ctx = request.getContextPath(); %>
                     data-price="30000"
                 >
                     <img
-                        src="${pageContext.request.contextPath}/images/2-150x150.png"
+                        src="<%= ctx %>/images/2-150x150.png"
                         alt="Sản phẩm 1"
                         width="150"
                     />
@@ -136,7 +124,7 @@ String ctx = request.getContextPath(); %>
                     data-price="25000"
                 >
                     <img
-                        src="${pageContext.request.contextPath}/images/30-150x150.png"
+                        src="<%= ctx %>/images/30-150x150.png"
                         alt="Sản phẩm 2"
                         width="150"
                     />
@@ -151,7 +139,7 @@ String ctx = request.getContextPath(); %>
                     data-price="40000"
                 >
                     <img
-                        src="${pageContext.request.contextPath}/images/IMG_5594-750x750.jpg"
+                        src="<%= ctx %>/images/IMG_5594-750x750.jpg"
                         alt="Sản phẩm 3"
                         width="150"
                     />
@@ -166,7 +154,7 @@ String ctx = request.getContextPath(); %>
                     data-price="30000"
                 >
                     <img
-                        src="${pageContext.request.contextPath}/images/6-150x150.png"
+                        src="<%= ctx %>/images/6-150x150.png"
                         alt="Sản phẩm 4"
                         width="150"
                     />
@@ -181,7 +169,7 @@ String ctx = request.getContextPath(); %>
                     data-price="25000"
                 >
                     <img
-                        src="${pageContext.request.contextPath}/images/38-150x150.png"
+                        src="<%= ctx %>/images/38-150x150.png"
                         alt="Sản phẩm 5"
                         width="150"
                     />
@@ -196,7 +184,7 @@ String ctx = request.getContextPath(); %>
                     data-price="40000"
                 >
                     <img
-                        src="${pageContext.request.contextPath}/images/16-150x150.png"
+                        src="<%= ctx %>/images/16-150x150.png"
                         alt="Sản phẩm 6"
                         width="150"
                     />
@@ -268,7 +256,7 @@ String ctx = request.getContextPath(); %>
         </footer>
 
         <script>
-            // Filter + sort + search (fixed selectors)
+            // Filter + sort + search
             document.addEventListener("DOMContentLoaded", function () {
                 const categorySelect =
                     document.getElementById("categorySelect");
@@ -293,7 +281,6 @@ String ctx = request.getContextPath(); %>
 
                     let filtered = [...products];
 
-                    // Filter by category
                     if (category) {
                         filtered = filtered.filter(
                             (p) =>
@@ -302,7 +289,6 @@ String ctx = request.getContextPath(); %>
                         );
                     }
 
-                    // Filter by name keyword
                     if (keyword) {
                         filtered = filtered.filter((p) => {
                             const name = (
@@ -312,20 +298,19 @@ String ctx = request.getContextPath(); %>
                         });
                     }
 
-                    // Sort
-                    if (sort === "price_asc") {
+                    if (sort === "price_asc")
                         filtered.sort(
                             (a, b) =>
                                 Number(a.dataset.price) -
                                 Number(b.dataset.price)
                         );
-                    } else if (sort === "price_desc") {
+                    else if (sort === "price_desc")
                         filtered.sort(
                             (a, b) =>
                                 Number(b.dataset.price) -
                                 Number(a.dataset.price)
                         );
-                    } else if (sort === "name_asc") {
+                    else if (sort === "name_asc")
                         filtered.sort((a, b) =>
                             (
                                 a.querySelector("h3").innerText || ""
@@ -333,7 +318,7 @@ String ctx = request.getContextPath(); %>
                                 b.querySelector("h3").innerText || ""
                             )
                         );
-                    } else if (sort === "name_desc") {
+                    else if (sort === "name_desc")
                         filtered.sort((a, b) =>
                             (
                                 b.querySelector("h3").innerText || ""
@@ -341,9 +326,7 @@ String ctx = request.getContextPath(); %>
                                 a.querySelector("h3").innerText || ""
                             )
                         );
-                    }
 
-                    // Re-render
                     grid.innerHTML = "";
                     filtered.forEach((p) => grid.appendChild(p));
                 };
@@ -355,7 +338,7 @@ String ctx = request.getContextPath(); %>
         </script>
 
         <script>
-            // Add to cart (localStorage) - stays same
+            // Add to cart (localStorage)
             document.addEventListener("DOMContentLoaded", () => {
                 const addButtons = document.querySelectorAll(
                     ".product-card .order__btn"
@@ -378,7 +361,7 @@ String ctx = request.getContextPath(); %>
                         else cart.push({ name, price, image, quantity: 1 });
 
                         localStorage.setItem("cart", JSON.stringify(cart));
-                        alert("✅ Đã thêm sản phẩm vào giỏ hàng!");
+                        alert("Đã thêm sản phẩm vào giỏ hàng!");
                     });
                 });
             });

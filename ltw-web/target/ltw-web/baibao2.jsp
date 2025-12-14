@@ -1,0 +1,200 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%
+String ctx = request.getContextPath(); %>
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/home.css" />
+        <link rel="stylesheet" href="./css/baibao.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+            rel="stylesheet"
+        />
+        <title>5 cách sáng tạo để tái sử dụng chai nhựa | Cyclefy</title>
+    </head>
+
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="nav__wrapper">
+                    <div class="logo">
+                        <img
+                            class="logo-img"
+                            src="<%= ctx %>/assets/—Pngtree—green sprout leaf logo design_7431531.png"
+                            alt="logo"
+                        />
+                        <h5>Cyclefy</h5>
+                    </div>
+
+                    <div class="navigation">
+                        <div class="menu">
+                            <a href="<%= ctx %>/home.jsp" class="menu__item">Trang chủ</a>
+                            <a href="<%= ctx %>/about.jsp" class="menu__item"
+                                >Giới thiệu</a
+                            >
+                            <a
+                                href="<%= ctx %>/tintuc.jsp"
+                                class="menu__item active__menu"
+                                >Tin tức</a
+                            >
+                            <a href="<%= ctx %>/product.jsp" class="menu__item"
+                                >Sản phẩm</a
+                            >
+                            <a href="<%= ctx %>/cart.jsp" class="menu__item">Giỏ hàng</a>
+                            <a href="<%= ctx %>/checkout.jsp" class="menu__item"
+                                >Thanh toán</a
+                            >
+                        </div>
+                    </div>
+
+                    <div class="nav__right">
+                        <span class="cart__icon">
+                            <i class="ri-shopping-cart-fill"></i>
+                            <span class="cart__badge">1</span>
+                        </span>
+                        <span class="user">
+                            <i class="ri-user-fill"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ================= NỘI DUNG BÀI BÁO ================= -->
+        <section class="article-container container">
+            <h2 class="article-title">
+                5 cách sáng tạo để tái sử dụng chai nhựa
+            </h2>
+            <p class="article-date">Đăng ngày: 12/11/2025</p>
+
+            <img
+                src="<%= ctx %>/assets/news2.jpg"
+                alt="Tái sử dụng chai nhựa"
+                class="article-img"
+            />
+
+            <p>
+                Chai nhựa là một trong những loại rác thải phổ biến nhất hiện
+                nay. Thay vì vứt bỏ, chúng ta hoàn toàn có thể biến chúng thành
+                những vật dụng hữu ích ngay trong gia đình. Điều này không chỉ
+                tiết kiệm chi phí mà còn góp phần giảm tải lượng rác thải ra môi
+                trường.
+            </p>
+
+            <p>
+                1️⃣ <strong>Chậu cây mini:</strong> Cắt đôi chai nhựa, trang trí
+                theo phong cách của bạn và trồng cây nhỏ như xương rồng hoặc sen
+                đá. Đây là lựa chọn cực kỳ phổ biến vì tính thẩm mỹ cao và dễ
+                thực hiện.
+            </p>
+
+            <p>
+                2️⃣ <strong>Đèn trang trí:</strong> Tận dụng phần thân chai để
+                làm chụp đèn cực kỳ độc đáo. Kết hợp với đèn LED, bạn có thể tạo
+                ra không gian ấm áp và hiện đại trong phòng ngủ.
+            </p>
+
+            <img
+                src="<%= ctx %>/assets/recycle3.jpg"
+                alt="Tái chế chai nhựa sáng tạo"
+                class="article-img"
+            />
+
+            <p>
+                3️⃣ <strong>Hộp đựng đồ:</strong> Nhiều chai nhựa có thể ghép lại
+                thành khay đựng bút, dụng cụ, đồ văn phòng. Một cách đơn giản
+                nhưng rất hữu ích cho học sinh – sinh viên.
+            </p>
+
+            <p>
+                4️⃣ <strong>Bình tưới cây:</strong> Chỉ cần đục lỗ nhỏ trên nắp
+                chai là bạn đã có ngay bình tưới mini. Lượng nước phun ra nhẹ
+                nhàng, phù hợp cho các loại cây cảnh trong nhà.
+            </p>
+
+            <p>
+                5️⃣ <strong>Đồ chơi sáng tạo:</strong> Trẻ em có thể dùng chai
+                nhựa để làm ô tô đồ chơi, con vật hoặc robot. Đây là hoạt động
+                tuyệt vời giúp trẻ phát triển tư duy sáng tạo.
+            </p>
+
+            <p>
+                Những ý tưởng tái sử dụng này không chỉ giảm lượng rác thải nhựa
+                mà còn giúp bạn có thêm nhiều vật dụng hữu ích, tạo nên phong
+                cách sống xanh bền vững hơn.
+            </p>
+
+            <a href="<%= ctx %>/tintuc.jsp" class="back-btn">← Quay lại trang Tin tức</a>
+        </section>
+
+        <footer class="footer">
+            <div class="footer__logo">
+                <h5>Về chúng tôi</h5>
+                <p>
+                    Cyclefy – nền tảng mang lại sản phẩm tái chế thân thiện với
+                    môi trường.
+                </p>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__title">Thời gian hoạt động</h5>
+                <div class="deliver__time-list">
+                    <div class="delivery__time-item">
+                        <span>Chủ nhật - Thứ năm</span>
+                        <p>8:00 - 17:00</p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Thứ sáu - Thứ bảy</span>
+                        <p>8:00 - 14:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__title">Thông tin liên hệ</h5>
+                <div class="deliver__time-list">
+                    <div class="delivery__time-item">
+                        <p>
+                            Địa chỉ 1: Khu phố 6, Phường Linh Trung, TP Thủ Đức,
+                            TP.HCM
+                        </p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <p>Địa chỉ 2: Khoa CNTT, Đại học Nông Lâm TP.HCM</p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Phone: 0123456789</span>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Email: example@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__title">Đăng ký</h5>
+                <div class="delivery__time-item">
+                    <p>Đăng ký để nhận thông tin mới nhất.</p>
+                </div>
+                <div class="newsletter">
+                    <input type="email" placeholder="Nhập email của bạn" />
+                    <span><i class="ri-send-plane-line"></i></span>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            (function () {
+                const header = document.querySelector(".header");
+                const onScroll = () => {
+                    if (window.scrollY > 80)
+                        header.classList.add("header__shrink");
+                    else header.classList.remove("header__shrink");
+                };
+                window.addEventListener("scroll", onScroll);
+                onScroll();
+            })();
+        </script>
+    </body>
+</html>
