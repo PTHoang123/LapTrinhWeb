@@ -10,7 +10,7 @@ String ctx = request.getContextPath(); %>
             href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="./css/editProfile.css" />
+        <link rel="stylesheet" href="<%= ctx %>/css/checkout.css" />
     </head>
     <body>
         <header class="header">
@@ -27,7 +27,9 @@ String ctx = request.getContextPath(); %>
 
                     <div class="navigation">
                         <div class="menu">
-                            <a href="<%= ctx %>/home.jsp" class="menu__item active__menu"
+                            <a
+                                href="<%= ctx %>/home.jsp"
+                                class="menu__item active__menu"
                                 >Trang chủ</a
                             >
                             <a href="/about" class="menu__item">Giới thiệu</a>
@@ -36,7 +38,9 @@ String ctx = request.getContextPath(); %>
                                 >Sản phẩm</a
                             >
                             <a href="/cart" class="menu__item">Giỏ hàng</a>
-                            <a href="<%= ctx %>//checkout.jsp" class="menu__item"
+                            <a
+                                href="<%= ctx %>//checkout.jsp"
+                                class="menu__item"
                                 >Thanh toán</a
                             >
                         </div>
@@ -55,7 +59,7 @@ String ctx = request.getContextPath(); %>
             </div>
         </header>
         <div class="banner-section">
-            <img class="banner-img" src="/assets/banner.png" alt="" />
+            <img class="banner-img" src="<%= ctx %>/assets/banner.png" alt="" />
             <h2 class="title-banner">Chỉnh sửa thông tin cá nhân</h2>
         </div>
         <div class="body">
