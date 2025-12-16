@@ -28,7 +28,9 @@ String ctx = request.getContextPath(); %>
 
                     <div class="navigation">
                         <div class="menu">
-                            <a href="<%= ctx %>/home.jsp" class="menu__item active__menu"
+                            <a
+                                href="<%= ctx %>/home.jsp"
+                                class="menu__item active__menu"
                                 >Trang chủ</a
                             >
                             <a href="/about" class="menu__item">Giới thiệu</a>
@@ -37,7 +39,9 @@ String ctx = request.getContextPath(); %>
                                 >Sản phẩm</a
                             >
                             <a href="/cart" class="menu__item">Giỏ hàng</a>
-                            <a href="<%= ctx %>//checkout.jsp" class="menu__item"
+                            <a
+                                href="<%= ctx %>//checkout.jsp"
+                                class="menu__item"
                                 >Thanh toán</a
                             >
                         </div>
@@ -56,7 +60,7 @@ String ctx = request.getContextPath(); %>
             </div>
         </header>
         <div class="banner-section">
-            <img class="banner-img" src="/assets/banner.png" alt="" />
+            <img class="banner-img" src="<%= ctx %>/assets/banner.png" alt="" />
             <h2 class="title-banner">Văn hoá</h2>
         </div>
         <!-- hero section -->
@@ -76,7 +80,10 @@ String ctx = request.getContextPath(); %>
                         </h1>
                     </div>
                     <div class="hero__img">
-                        <img src="<%= ctx %>/assets/culture1.png" alt="delivery-guy" />
+                        <img
+                            src="<%= ctx %>/assets/culture1.png"
+                            alt="delivery-guy"
+                        />
                     </div>
                 </div>
             </div>
@@ -121,13 +128,22 @@ String ctx = request.getContextPath(); %>
                 <h2 class="partner-title">Những người bạn đồng hành</h2>
                 <div class="partner-logos">
                     <div class="partner-logo">
-                        <img src="<%= ctx %>/assets/partner1.png" alt="Partner 1" />
+                        <img
+                            src="<%= ctx %>/assets/partner1.png"
+                            alt="Partner 1"
+                        />
                     </div>
                     <div class="partner-logo">
-                        <img src="<%= ctx %>/assets/partner2.png" alt="Partner 2" />
+                        <img
+                            src="<%= ctx %>/assets/partner2.png"
+                            alt="Partner 2"
+                        />
                     </div>
                     <div class="partner-logo">
-                        <img src="<%= ctx %>/assets/partner3.png" alt="Partner 3" />
+                        <img
+                            src="<%= ctx %>/assets/partner3.png"
+                            alt="Partner 3"
+                        />
                     </div>
                 </div>
             </div>
