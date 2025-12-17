@@ -111,7 +111,6 @@ String ctx = request.getContextPath(); %>
                     <img
                         src="<%= ctx %>/images/2-150x150.png"
                         alt="Sản phẩm 1"
-                        width="150"
                     />
                     <h3>Thùng rác nhựa tái chế</h3>
                     <p class="price">30.000đ</p>
@@ -126,7 +125,6 @@ String ctx = request.getContextPath(); %>
                     <img
                         src="<%= ctx %>/images/30-150x150.png"
                         alt="Sản phẩm 2"
-                        width="150"
                     />
                     <h3>Bàn nhựa tái chế</h3>
                     <p class="price">25.000đ</p>
@@ -141,7 +139,6 @@ String ctx = request.getContextPath(); %>
                     <img
                         src="<%= ctx %>/images/IMG_5594-750x750.jpg"
                         alt="Sản phẩm 3"
-                        width="150"
                     />
                     <h3>Kệ sách giấy</h3>
                     <p class="price">40.000đ</p>
@@ -156,7 +153,6 @@ String ctx = request.getContextPath(); %>
                     <img
                         src="<%= ctx %>/images/6-150x150.png"
                         alt="Sản phẩm 4"
-                        width="150"
                     />
                     <h3>Chậu cây nhựa tái chế</h3>
                     <p class="price">30.000đ</p>
@@ -171,7 +167,6 @@ String ctx = request.getContextPath(); %>
                     <img
                         src="<%= ctx %>/images/38-150x150.png"
                         alt="Sản phẩm 5"
-                        width="150"
                     />
                     <h3>Tủ giày nhựa tái chế</h3>
                     <p class="price">25.000đ</p>
@@ -185,8 +180,7 @@ String ctx = request.getContextPath(); %>
                 >
                     <img
                         src="<%= ctx %>/images/16-150x150.png"
-                        alt="Sản phẩm 6"
-                        width="150"
+                        alt="sản phẩm 6"
                     />
                     <h3>Hộp giấy</h3>
                     <p class="price">40.000đ</p>
