@@ -1,0 +1,16 @@
+USE ltw;
+
+CREATE TABLE IF NOT EXISTS products_img (
+  img_id INT AUTO_INCREMENT PRIMARY KEY,
+  product_id INT NOT NULL,
+  url VARCHAR(1024) NOT NULL,
+  alt VARCHAR(255) NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  CONSTRAINT fk_products_img_product
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    ON DELETE CASCADE,
+
+  UNIQUE KEY uq_products_img_product (product_id)
+);
