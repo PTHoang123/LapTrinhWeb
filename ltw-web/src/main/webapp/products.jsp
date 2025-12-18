@@ -11,6 +11,52 @@
 
   <title>Products</title>
   <link rel="stylesheet" href="${ctx}/css/product.css" />
+  <style>
+    /* Pagination (inline, JSP-only) */
+    .pagination{
+      margin:22px 0 0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .pagination a,
+    .pagination span{
+      min-width:38px;
+      height:38px;
+      padding:0 12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      border:1px solid #e5e7eb;
+      background:#fff;
+      box-shadow:0 6px 16px rgba(16,24,40,0.08);
+      font-weight:800;
+      color:#212245;
+      text-decoration:none;
+    }
+    .pagination a:hover{
+      border-color:rgba(136,191,61,0.5);
+    }
+    .pagination a.active{
+      background:rgba(136,191,61,0.18);
+      border-color:rgba(136,191,61,0.6);
+      color:#212245;
+    }
+    .pagination span.disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
+    .pagination .dots{
+      border:none;
+      background:transparent;
+      box-shadow:none;
+      min-width:auto;
+      padding:0 2px;
+    }
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css"/>
 </head>
 
