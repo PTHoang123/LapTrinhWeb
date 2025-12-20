@@ -74,4 +74,41 @@ public class ProductDAO {
         }
         return list;
     }
+
+
+    public Product getProductById(int id) {
+        LOG.info("[ProductDAO] getProductById() id=" + id);
+
+        String sql =
+                "SELECT p.product_id, p.name, p.price, p.description, i.url " +
+                "FROM products p " +
+                "LEFT JOIN products_img i " +
+                "  ON p.product_id = i.product_id AND i.is_primary = 1 " +
+                "WHERE p.product_id = ? " +
+                "LIMIT 1";
+        
+            try (Connection c = Db.getConnection()) {
+                logCurrentDatabase(c);
+            
+            try (PreparedStatement ps = c.prepareStatement(sql)) {
+                ps.setInt(1, id);
+            
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        return new Product(
+                            rs.getInt("product_id"),
+                            rs.getString("name"),
+                            rs.getDouble("price"),
+                            rs.getString("url"),
+                            rs.getString("description")
+                        );
+                    }
+                }
+            }
+            } catch (Exception e) {
+                LOG.log(Level.SEVERE, "[ProductDAO] getProductById failed", e);
+            }
+        return null;
+    }
+
 }

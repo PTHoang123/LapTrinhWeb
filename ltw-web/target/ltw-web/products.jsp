@@ -137,7 +137,7 @@
     <div class="product-grid">
       <c:forEach var="p" items="${products}">
         <div class="product-card">
-          <a href="${ctx}/product.jsp?id=${p.id}">
+          <a href="${ctx}/product?id=${p.id}">
             <c:choose>
               <c:when test="${not empty p.imageUrl}">
                 <img src="${ctx}/${p.imageUrl}" alt="<c:out value='${p.name}'/>" />
