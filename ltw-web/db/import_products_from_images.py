@@ -1,14 +1,38 @@
 import re
 import subprocess
+import random
 from pathlib import Path
 
 DB = "ltw"
-# your path
 IMG_DIR = Path("/Users/mac/LTW/ltw-web/src/main/webapp/images")
 
 CATEGORY_ID = 1
 MYSQL_DEFAULTS = str(Path.home() / ".my.cnf")
 EXTS = {".png", ".jpg", ".jpeg", ".webp"}
+
+# Random VND price settings
+PRICE_MIN_VND = 100_000
+PRICE_MAX_VND = 5_000_000
+PRICE_STEP_VND = 1_000  # keep it "VND-like" steps
+
+# Description settings (>= 50 chars)
+DESC_MIN_LEN = 50
+
+DESC_SENTENCES = [
+    "Sản phẩm thân thiện môi trường, thiết kế tối giản và dễ sử dụng.",
+    "Chất liệu bền, hoàn thiện chắc chắn, phù hợp nhiều không gian.",
+    "Dễ vệ sinh, dễ bảo quản, dùng hằng ngày rất tiện lợi.",
+    "Phù hợp cho gia đình và văn phòng, đóng gói cẩn thận khi giao hàng.",
+    "Màu sắc và chi tiết có thể thay đổi nhẹ tùy theo từng lô sản xuất.",
+    "Gợi ý sử dụng: kết hợp cùng các phụ kiện tái chế để đồng bộ phong cách.",
+    "Kích thước vừa phải, tối ưu công năng và tiết kiệm diện tích.",
+    "Sản phẩm được lựa chọn kỹ, ưu tiên độ bền và tính an toàn khi sử dụng.",
+]
+
+DESC_TAGS = [
+    "Tái chế", "Bền vững", "Tiện dụng", "Tối giản", "Thân thiện môi trường",
+    "Chất lượng tốt", "Dễ dùng", "Dễ vệ sinh"
+]
 
 def run_mysql(sql: str):
     subprocess.check_call(["mysql", f"--defaults-file={MYSQL_DEFAULTS}", DB, "-e", sql])
@@ -21,7 +45,6 @@ def mysql_query(sql: str) -> str:
 
 def slugify(name: str) -> str:
     s = name.strip().lower()
-    # remove extension-like leftovers
     s = re.sub(r"\s+", "-", s)
     s = re.sub(r"[^a-z0-9\-]+", "-", s)
     s = re.sub(r"-{2,}", "-", s).strip("-")
@@ -39,13 +62,34 @@ def sql_quote(s: str) -> str:
 def ensure_category():
     if CATEGORY_ID is None:
         return
-    # Ensure category 1 exists (create if missing)
     sql = f"""
     INSERT INTO categories(category_id, name, slug)
     VALUES ({CATEGORY_ID}, 'Imported', 'imported')
     ON DUPLICATE KEY UPDATE name=VALUES(name), slug=VALUES(slug);
     """
     run_mysql(sql)
+
+def random_price_vnd() -> int:
+    # Random in steps (e.g. 1000 VND)
+    steps = (PRICE_MAX_VND - PRICE_MIN_VND) // PRICE_STEP_VND
+    return PRICE_MIN_VND + random.randint(0, steps) * PRICE_STEP_VND
+
+def random_description(min_len: int = DESC_MIN_LEN) -> str:
+    # Build a description by sampling sentences + tags until >= min_len
+    parts = []
+    # 2-4 sentences
+    for s in random.sample(DESC_SENTENCES, k=random.randint(2, 4)):
+        parts.append(s)
+
+    # add 2-4 tags
+    tags = ", ".join(random.sample(DESC_TAGS, k=random.randint(2, 4)))
+    parts.append(f"Từ khóa: {tags}.")
+
+    desc = " ".join(parts).strip()
+    # ensure minimum length
+    while len(desc) < min_len:
+        desc += " " + random.choice(DESC_SENTENCES)
+    return desc
 
 def main():
     if not IMG_DIR.exists():
@@ -69,13 +113,18 @@ def main():
 
         cat = "NULL" if CATEGORY_ID is None else str(CATEGORY_ID)
 
+        price_vnd = random_price_vnd()
+        # Store as DECIMAL(10,2) but with .00
+        price_sql = f"{price_vnd}.00"
+
+        desc = random_description()
+
         insert_product_sql = f"""
         INSERT INTO products(category_id, name, slug, description, price, status)
-        VALUES ({cat}, {sql_quote(name)}, {sql_quote(slug)}, NULL, 0.00, 'active');
+        VALUES ({cat}, {sql_quote(name)}, {sql_quote(slug)}, {sql_quote(desc)}, {price_sql}, 'active');
         SELECT LAST_INSERT_ID();
         """
 
-        # Get created product_id
         pid_str = mysql_query(insert_product_sql).strip()
         if not pid_str.isdigit():
             raise SystemExit(f"Failed to get product_id for image {img.name}. Got: {pid_str!r}")
@@ -87,7 +136,7 @@ def main():
         """
         run_mysql(insert_img_sql)
 
-        print(f"Inserted product_id={pid} name={name!r} img={url!r}")
+        print(f"Inserted product_id={pid} price={price_vnd} desc_len={len(desc)} name={name!r} img={url!r}")
 
     print("Done.")
 

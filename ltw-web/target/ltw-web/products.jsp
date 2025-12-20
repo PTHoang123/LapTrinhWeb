@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
@@ -12,7 +13,6 @@
   <title>Products</title>
   <link rel="stylesheet" href="${ctx}/css/product.css" />
   <style>
-    /* Pagination (inline, JSP-only) */
     .pagination{
       margin:22px 0 0;
       display:flex;
@@ -148,7 +148,14 @@
             </c:choose>
 
             <h3><c:out value="${p.name}" /></h3>
-            <p class="price"><c:out value="${p.price}" /></p>
+            <p class="price">
+              <c:choose>
+                <c:when test="${not empty p.price}">
+                  <fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0" /> VND
+                </c:when>
+                <c:otherwise>0 VND</c:otherwise>
+              </c:choose>
+            </p>
           </a>
 
           <div style="padding: 0 14px 14px;">

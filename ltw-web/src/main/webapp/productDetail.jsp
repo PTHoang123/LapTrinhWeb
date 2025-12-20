@@ -1,17 +1,24 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%
-String ctx = request.getContextPath(); %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@
+taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<fmt:setLocale value="vi_VN" />
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title><c:out value="${product.name}" /></title>
+
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="./css/productDetail.css" />
+        <link rel="stylesheet" href="${ctx}/css/productDetail.css" />
     </head>
+
     <body>
         <header class="header">
             <div class="container">
@@ -19,7 +26,7 @@ String ctx = request.getContextPath(); %>
                     <div class="logo">
                         <img
                             class="logo-img"
-                            src="<%= ctx %>/assets/—Pngtree—green sprout leaf logo design_7431531.png"
+                            src="${ctx}/assets/—Pngtree—green sprout leaf logo design_7431531.png"
                             alt="logo"
                         />
                         <h5>Cyclefy</h5>
@@ -27,16 +34,24 @@ String ctx = request.getContextPath(); %>
 
                     <div class="navigation">
                         <div class="menu">
-                            <a href="<%= ctx %>/home.jsp" class="menu__item active__menu"
+                            <a href="${ctx}/home.jsp" class="menu__item"
                                 >Trang chủ</a
                             >
-                            <a href="/about" class="menu__item">Giới thiệu</a>
-                            <a href="/news" class="menu__item">Tin tức</a>
-                            <a href="<%= ctx %>/product.jsp" class="menu__item"
+                            <a href="${ctx}/about.jsp" class="menu__item"
+                                >Giới thiệu</a
+                            >
+                            <a href="${ctx}/news.jsp" class="menu__item"
+                                >Tin tức</a
+                            >
+                            <a
+                                href="${ctx}/products"
+                                class="menu__item active__menu"
                                 >Sản phẩm</a
                             >
-                            <a href="/cart" class="menu__item">Giỏ hàng</a>
-                            <a href="<%= ctx %>//checkout.jsp" class="menu__item"
+                            <a href="${ctx}/cart.jsp" class="menu__item"
+                                >Giỏ hàng</a
+                            >
+                            <a href="${ctx}/checkout.jsp" class="menu__item"
                                 >Thanh toán</a
                             >
                         </div>
@@ -47,118 +62,86 @@ String ctx = request.getContextPath(); %>
                             <i class="ri-shopping-cart-fill"></i>
                             <span class="cart__badge">1</span>
                         </span>
-                        <span class="user">
-                            <i class="ri-user-fill"></i>
-                        </span>
+                        <span class="user"><i class="ri-user-fill"></i></span>
                     </div>
                 </div>
             </div>
         </header>
-        <div class="banner-section">
-            <img class="banner-img" src="/assets/banner.png" alt="" />
-            <h2 class="title-banner">Thanh Toán</h2>
-        </div>
-        <div class="body">
-            <div class="product-img">
-                <img
-                    class="product-img__img"
-                    src="<%= ctx %>/assets/product2.png"
-                    alt=""
-                />
-            </div>
-            <div class="product-detail">
-                <div class="product-title">
-                    <h2>Cờ nút nhựa tái chế</h2>
-                    <p>Giá: 100.000 VNĐ</p>
-                    <p>Đã bán: 50</p>
-                    <p>Đánh giá: 4.5/5</p>
-                    <p>
-                        Mô tả: Cờ nút nhựa tái chế được làm từ 100% nhựa tái
-                        chế, an toàn cho người sử dụng và thân thiện với môi
-                        trường. Sản phẩm có độ bền cao, thiết kế đẹp mắt và đa
-                        dạng màu sắc, phù hợp cho nhiều mục đích sử dụng khác
-                        nhau.
-                    </p>
-                    <p>màu sắc: <span>màu trắng</span></p>
-                    <p>Danh sách màu</p>
-                    <div class="color-list">
-                        <button
-                            class="color-item is-active"
-                            type="button"
-                            aria-pressed="true"
-                        >
-                            <span
-                                class="color-circle"
-                                style="background-color: #ffffff"
-                            ></span>
-                            <span class="color-name">Trắng</span>
-                        </button>
-                        <button class="color-item" type="button">
-                            <span
-                                class="color-circle"
-                                style="background-color: #ef4444"
-                            ></span>
-                            <span class="color-name">Đỏ</span>
-                        </button>
-                        <button class="color-item" type="button">
-                            <span
-                                class="color-circle"
-                                style="background-color: #3b82f6"
-                            ></span>
-                            <span class="color-name">Xanh dương</span>
-                        </button>
-                    </div>
-                    <p>kích thước: <span>2cm</span></p>
-                    <p>chất liệu: <span>nhựa tái chế</span></p>
-                    <div class="quantity-section">
-                        <label for="quantity">Số lượng:</label>
-                        <input
-                            class="quantity-input"
-                            type="number"
-                            min="1"
-                            value="1"
-                        />
-                    </div>
-                </div>
-                <button class="order__btn">
-                    <a href="/cart" class="order__now">Thêm vào giỏ hàng</a>
-                </button>
-            </div>
-        </div>
 
-        <!-- Product review / comment section -->
-        <section class="review-section">
+        <main class="body">
             <div class="container">
-                <h3 class="review-title">Đánh giá & Bình luận</h3>
+                <c:if test="${empty product}">
+                    <h2>Không tìm thấy sản phẩm</h2>
+                    <p><a href="${ctx}/products">Quay lại danh sách</a></p>
+                </c:if>
 
-                <form class="review-form">
-                    <div class="review-rating">
-                        <label>Đánh giá của bạn:</label>
-                        <div class="review-stars">
-                            <button type="button" data-value="1">★</button>
-                            <button type="button" data-value="2">★</button>
-                            <button type="button" data-value="3">★</button>
-                            <button type="button" data-value="4">★</button>
-                            <button type="button" data-value="5">★</button>
+                <c:if test="${not empty product}">
+                    <div class="body">
+                        <div class="product-img">
+                            <c:choose>
+                                <c:when test="${not empty product.imageUrl}">
+                                    <img
+                                        class="product-img__img"
+                                        src="${ctx}/${product.imageUrl}"
+                                        alt="<c:out value='${product.name}'/>"
+                                    />
+                                </c:when>
+                                <c:otherwise>
+                                    <img
+                                        class="product-img__img"
+                                        src="${ctx}/assets/placeholder.png"
+                                        alt="No image"
+                                    />
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+
+                        <div class="product-detail">
+                            <div class="product-title">
+                                <h2><c:out value="${product.name}" /></h2>
+
+                                <p>
+                                    Giá:
+                                    <fmt:formatNumber
+                                        value="${product.price}"
+                                        type="number"
+                                        maxFractionDigits="0"
+                                    />
+                                    VND
+                                </p>
+
+                                <p>
+                                    Mô tả:
+                                    <c:out value="${product.description}" />
+                                </p>
+
+                                <div class="quantity-section">
+                                    <label for="quantity">Số lượng:</label>
+                                    <input
+                                        id="quantity"
+                                        class="quantity-input"
+                                        type="number"
+                                        min="1"
+                                        value="1"
+                                    />
+                                </div>
+                            </div>
+
+                            <form method="post" action="${ctx}/cart/add">
+                                <input
+                                    type="hidden"
+                                    name="productId"
+                                    value="${product.id}"
+                                />
+                                <button class="order__btn" type="submit">
+                                    Thêm vào giỏ hàng
+                                </button>
+                            </form>
                         </div>
                     </div>
-
-                    <div class="review-input-group">
-                        <label for="review-comment">Nội dung bình luận</label>
-                        <textarea
-                            id="review-comment"
-                            class="review-textarea"
-                            rows="4"
-                            placeholder="Chia sẻ cảm nhận của bạn về sản phẩm..."
-                        ></textarea>
-                    </div>
-
-                    <button type="submit" class="review-submit">
-                        Gửi đánh giá
-                    </button>
-                </form>
+                </c:if>
             </div>
-        </section>
+        </main>
 
         <footer class="footer">
             <div class="footer__logo">
@@ -218,10 +201,12 @@ String ctx = request.getContextPath(); %>
                 </div>
             </div>
         </footer>
+
         <script>
             (function () {
                 const header = document.querySelector(".header");
                 const onScroll = () => {
+                    if (!header) return;
                     if (window.scrollY > 80)
                         header.classList.add("header__shrink");
                     else header.classList.remove("header__shrink");
