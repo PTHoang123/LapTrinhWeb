@@ -1,78 +1,46 @@
+:root {
+    --bg: #f6f7fb;
+    --surface: #ffffff;
+    --text: #1f2a37;
+    --muted: #6b7280;
+    --brand: #88bf3d;
+    --brand-2: #212245;
+    --border: #e5e7eb;
+    --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+    --shadow-sm: 0 6px 16px rgba(16, 24, 40, 0.08);
+    --radius: 14px;
+}
+
 * {
-    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+}
+body {
     margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+        sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    color: var(--brand);
 }
 
 .header {
-    width: 100%;
-    height: 100px;
-    line-height: 100px;
-}
-
-.logo {
-    text-align: center;
-}
-.logo img {
-    width: 100px;
-    object-fit: contain;
-    margin-top: 5px;
-}
-
-.logo h5 {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #212245;
-    margin-top: -80px;
-    margin-bottom: 0;
-}
-
-.menu a {
-    font-weight: 300;
-    font-size: 1.2rem;
-    color: #212245;
-    transition: 0.3s;
-}
-
-.menu a:hover {
-    color: #88bf3d;
-}
-
-.active__menu {
-    color: #88bf3d !important;
-}
-
-.cart__icon {
-    position: relative;
-}
-
-.cart__badge {
-    position: absolute;
-    top: 30px;
-    right: -10px;
-    background: #df2020;
-    color: #fff;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-i {
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.header__shrink {
     position: sticky;
     top: 0;
-    left: 0;
-    background: #fff;
-    height: 130px;
-    z-index: 99999;
-    box-shadow: 5px 5px 15px -5px #fde4e4;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
 }
 
 .container {
@@ -87,27 +55,91 @@ i {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    height: 78px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+.logo h5 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    color: var(--brand-2);
 }
 
 .menu {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.menu a {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--brand-2);
+    padding: 8px 10px;
+    border-radius: 10px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.menu a:hover {
+    background: rgba(136, 191, 61, 0.12);
+}
+.active__menu {
+    color: var(--brand) !important;
+    background: rgba(136, 191, 61, 0.12);
 }
 
 .nav__right {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
-.menu a {
-    text-decoration: none;
+i {
+    font-size: 1.35rem;
+    cursor: pointer;
+    color: var(--brand-2);
 }
-a {
-    text-decoration: none;
+.cart__icon {
+    position: relative;
+    padding: 8px;
+    border-radius: 10px;
+}
+.cart__icon:hover {
+    background: rgba(17, 24, 39, 0.06);
 }
 
+.cart__badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #df2020;
+    color: #fff;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+}
+
+/* Optional shrink behavior (your JS toggles this class) */
+.header__shrink .nav__wrapper {
+    height: 70px;
+}
 .hero {
     padding: 20px 0;
 }

@@ -1,16 +1,19 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%
-String ctx = request.getContextPath(); %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@
+taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="vi">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Giỏ hàng - Cyclefy</title>
-        <link rel="stylesheet" href="./css/cart.css" />
+        <title>cart</title>
+
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
             rel="stylesheet"
         />
+        <link rel="stylesheet" href="${ctx}/css/cart.css" />
     </head>
     <body>
         <!-- HEADER -->
@@ -20,7 +23,7 @@ String ctx = request.getContextPath(); %>
                     <div class="logo">
                         <img
                             class="logo-img"
-                            src="<%= ctx %>/assets/—Pngtree—green sprout leaf logo design_7431531.png"
+                            src="${ctx}/assets/—Pngtree—green sprout leaf logo design_7431531.png"
                             alt="logo"
                         />
                         <h5>Cyclefy</h5>
@@ -28,25 +31,30 @@ String ctx = request.getContextPath(); %>
 
                     <div class="navigation">
                         <div class="menu">
-                            <a href="<%= ctx %>/home.jsp" class="menu__item active__menu"
+                            <a
+                                href="${ctx}/home.jsp"
+                                class="menu__item active__menu"
                                 >Trang chủ</a
                             >
-                            <a href="<%= ctx %>//about.jsp" class="menu__item"
+                            <a href="${ctx}/about.jsp" class="menu__item"
                                 >Giới thiệu</a
                             >
-                            <a href="<%= ctx %>//news.jsp" class="menu__item">Tin tức</a>
-                            <a href="<%= ctx %>/categories.jsp" class="menu__item"
+                            <a href="${ctx}/news.jsp" class="menu__item"
+                                >Tin tức</a
+                            >
+                            <a href="${ctx}/categories.jsp" class="menu__item"
                                 >Danh mục</a
                             >
-                            <a href="<%= ctx %>/product.jsp" class="menu__item"
+                            <a href="${ctx}/product.jsp" class="menu__item"
                                 >Sản phẩm</a
                             >
-                            <a href="<%= ctx %>//cart.jsp" class="menu__item">Giỏ hàng</a>
-
-                            <a href="<%= ctx %>//checkout.jsp" class="menu__item"
+                            <a href="${ctx}/cart.jsp" class="menu__item"
+                                >Giỏ hàng</a
+                            >
+                            <a href="${ctx}/checkout.jsp" class="menu__item"
                                 >Thanh toán</a
                             >
-                            <a href="<%= ctx %>//faq.jsp" class="menu__item">FAQ</a>
+                            <a href="${ctx}/faq.jsp" class="menu__item">FAQ</a>
                         </div>
                     </div>
 
