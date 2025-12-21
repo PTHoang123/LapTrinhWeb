@@ -1,13 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@
 taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%@ taglib
 uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
+<fmt:setLocale value="vi_VN" />
+
 <!DOCTYPE html>
 <html lang="vi">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>cart</title>
+        <title>Giỏ hàng</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
@@ -72,41 +75,56 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
         </header>
 
         <!-- GIỎ HÀNG -->
-        <section class="container" style="margin-top: 120px">
-            <h2 class="section__title">🛒 Giỏ hàng</h2>
-
-            <table class="cart-table">
-                <thead>
-                    <tr>
-                        <th>Ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Tổng</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody id="cart-body">
-                    <!-- sản phẩm hiển thị ở đây -->
-                </tbody>
-            </table>
-
-            <div class="cart-summary">
-                <h3>Tổng cộng: <span id="cart-total">0đ</span></h3>
-                <div class="cart-actions">
-                    <button
-                        id="clear-cart"
-                        class="order__btn"
-                        style="background-color: #dc3545"
-                    >
-                        Xóa toàn bộ
-                    </button>
-                    <button id="checkout-btn" class="order__btn">
-                        Thanh toán
-                    </button>
-                </div>
-            </div>
-        </section>
+       
+        <c:set var="cart" value="${sessionScope.CART}" />
+            
+        <tbody id="cart-body">
+          <c:if test="${empty cart or empty cart.items}">
+            <tr><td colspan="6">Giỏ hàng trống</td></tr>
+          </c:if>
+      
+          <c:if test="${not empty cart and not empty cart.items}">
+            <c:forEach var="it" items="${cart.items}">
+              <tr>
+                <td>
+                  <c:choose>
+                    <c:when test="${not empty it.imageUrl}">
+                      <img src="${ctx}/${it.imageUrl}" alt="<c:out value='${it.name}'/>">
+                    </c:when>
+                    <c:otherwise>
+                      <img src="${ctx}/assets/placeholder.png" alt="No image">
+                    </c:otherwise>
+                  </c:choose>
+                </td>
+                <td><c:out value="${it.name}" /></td>
+                <td>
+                  <fmt:formatNumber value="${it.price}" type="number" maxFractionDigits="0" /> VND
+                </td>
+                <td><c:out value="${it.quantity}" /></td>
+                <td>
+                  <fmt:formatNumber value="${it.lineTotal}" type="number" maxFractionDigits="0" /> VND
+                </td>
+                <td>
+                  <!-- you can add remove/update actions later -->
+                </td>
+              </tr>
+            </c:forEach>
+          </c:if>
+        </tbody>
+        
+        <div class="cart-summary">
+          <h3>
+            Tổng cộng:
+            <span id="cart-total">
+              <c:choose>
+                <c:when test="${not empty cart}">
+                  <fmt:formatNumber value="${cart.totalAmount}" type="number" maxFractionDigits="0" /> VND
+                </c:when>
+                <c:otherwise>0 VND</c:otherwise>
+              </c:choose>
+            </span>
+          </h3>
+        </div>
 
         <!-- FOOTER -->
         <footer class="footer">

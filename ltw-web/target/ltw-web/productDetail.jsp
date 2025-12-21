@@ -125,6 +125,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                     <label for="quantity">Số lượng:</label>
                                     <input
                                         id="quantity"
+                                        name="quantity"
                                         class="quantity-input"
                                         type="number"
                                         min="1"
