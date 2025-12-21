@@ -120,6 +120,14 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                     Mô tả:
                                     <c:out value="${product.description}" />
                                 </p>
+                            </div>
+
+                            <form method="post" action="${ctx}/cart/add">
+                                <input
+                                    type="hidden"
+                                    name="productId"
+                                    value="${product.id}"
+                                />
 
                                 <div class="quantity-section">
                                     <label for="quantity">Số lượng:</label>
@@ -132,14 +140,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                         value="1"
                                     />
                                 </div>
-                            </div>
 
-                            <form method="post" action="${ctx}/cart/add">
-                                <input
-                                    type="hidden"
-                                    name="productId"
-                                    value="${product.id}"
-                                />
                                 <button class="order__btn" type="submit">
                                     Thêm vào giỏ hàng
                                 </button>

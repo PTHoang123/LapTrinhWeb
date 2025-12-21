@@ -140,6 +140,19 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                     name="productId"
                                     value="${product.id}"
                                 />
+
+                                <div class="quantity-section">
+                                    <label for="quantity">Số lượng:</label>
+                                    <input
+                                        id="quantity"
+                                        name="quantity"
+                                        class="quantity-input"
+                                        type="number"
+                                        min="1"
+                                        value="1"
+                                    />
+                                </div>
+
                                 <button class="order__btn" type="submit">
                                     Thêm vào giỏ hàng
                                 </button>
