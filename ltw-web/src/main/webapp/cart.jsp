@@ -75,56 +75,123 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
         </header>
 
         <!-- GIỎ HÀNG -->
-       
+
         <c:set var="cart" value="${sessionScope.CART}" />
-            
-        <tbody id="cart-body">
-          <c:if test="${empty cart or empty cart.items}">
-            <tr><td colspan="6">Giỏ hàng trống</td></tr>
-          </c:if>
-      
-          <c:if test="${not empty cart and not empty cart.items}">
-            <c:forEach var="it" items="${cart.items}">
-              <tr>
-                <td>
-                  <c:choose>
-                    <c:when test="${not empty it.imageUrl}">
-                      <img src="${ctx}/${it.imageUrl}" alt="<c:out value='${it.name}'/>">
-                    </c:when>
-                    <c:otherwise>
-                      <img src="${ctx}/assets/placeholder.png" alt="No image">
-                    </c:otherwise>
-                  </c:choose>
-                </td>
-                <td><c:out value="${it.name}" /></td>
-                <td>
-                  <fmt:formatNumber value="${it.price}" type="number" maxFractionDigits="0" /> VND
-                </td>
-                <td><c:out value="${it.quantity}" /></td>
-                <td>
-                  <fmt:formatNumber value="${it.lineTotal}" type="number" maxFractionDigits="0" /> VND
-                </td>
-                <td>
-                  <!-- you can add remove/update actions later -->
-                </td>
-              </tr>
-            </c:forEach>
-          </c:if>
-        </tbody>
-        
-        <div class="cart-summary">
-          <h3>
-            Tổng cộng:
-            <span id="cart-total">
-              <c:choose>
-                <c:when test="${not empty cart}">
-                  <fmt:formatNumber value="${cart.totalAmount}" type="number" maxFractionDigits="0" /> VND
-                </c:when>
-                <c:otherwise>0 VND</c:otherwise>
-              </c:choose>
-            </span>
-          </h3>
-        </div>
+
+        <main class="cart-page">
+            <div class="container">
+                <h2 class="cart-title">Giỏ hàng</h2>
+
+                <div class="cart-surface">
+                    <c:set var="cart" value="${sessionScope.CART}" />
+
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="cart-body">
+                            <c:if test="${empty cart or empty cart.items}">
+                                <tr>
+                                    <td class="cart-empty" colspan="6">
+                                        Giỏ hàng trống
+                                    </td>
+                                </tr>
+                            </c:if>
+
+                            <c:if
+                                test="${not empty cart and not empty cart.items}"
+                            >
+                                <c:forEach var="it" items="${cart.items}">
+                                    <tr>
+                                        <td class="cell-img">
+                                            <c:choose>
+                                                <c:when
+                                                    test="${not empty it.imageUrl}"
+                                                >
+                                                    <img
+                                                        src="${ctx}/${it.imageUrl}"
+                                                        alt="<c:out value='${it.name}'/>"
+                                                    />
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <img
+                                                        src="${ctx}/assets/placeholder.png"
+                                                        alt="No image"
+                                                    />
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </td>
+
+                                        <td class="cell-name">
+                                            <c:out value="${it.name}" />
+                                        </td>
+
+                                        <td class="cell-price">
+                                            <fmt:formatNumber
+                                                value="${it.price}"
+                                                type="number"
+                                                maxFractionDigits="0"
+                                            />
+                                            VND
+                                        </td>
+
+                                        <td class="cell-qty">
+                                            <c:out value="${it.quantity}" />
+                                        </td>
+
+                                        <td class="cell-total">
+                                            <fmt:formatNumber
+                                                value="${it.lineTotal}"
+                                                type="number"
+                                                maxFractionDigits="0"
+                                            />
+                                            VND
+                                        </td>
+
+                                        <td class="cell-actions">
+                                            <!-- later: remove/update buttons -->
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </c:if>
+                        </tbody>
+                    </table>
+
+                    <div class="cart-summary">
+                        <h3>
+                            Tổng cộng:
+                            <span class="amount">
+                                <c:choose>
+                                    <c:when test="${not empty cart}">
+                                        <fmt:formatNumber
+                                            value="${cart.totalAmount}"
+                                            type="number"
+                                            maxFractionDigits="0"
+                                        />
+                                        VND
+                                    </c:when>
+                                    <c:otherwise>0 VND</c:otherwise>
+                                </c:choose>
+                            </span>
+                        </h3>
+
+                        <div class="cart-actions">
+                            <a class="btn btn-ghost" href="${ctx}/products"
+                                >Tiếp tục mua</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
 
         <!-- FOOTER -->
         <footer class="footer">
