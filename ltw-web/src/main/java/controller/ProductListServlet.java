@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-// Remove @WebServlet("/products") because web.xml already maps it
 public class ProductListServlet extends HttpServlet {
 
     private final ProductDAO productDAO = new ProductDAO();
