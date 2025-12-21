@@ -34,7 +34,9 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
                     <div class="navigation">
                         <div class="menu">
-                            <a href="${ctx}/home.jsp" class="menu__item"
+                            <a
+                                href="${ctx}/home.jsp"
+                                class="menu__item active__menu"
                                 >Trang chủ</a
                             >
                             <a href="${ctx}/about.jsp" class="menu__item"
@@ -43,9 +45,10 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                             <a href="${ctx}/news.jsp" class="menu__item"
                                 >Tin tức</a
                             >
-                            <a
-                                href="${ctx}/products"
-                                class="menu__item active__menu"
+                            <a href="${ctx}/categories.jsp" class="menu__item"
+                                >Danh mục</a
+                            >
+                            <a href="${ctx}/product.jsp" class="menu__item"
                                 >Sản phẩm</a
                             >
                             <a href="${ctx}/cart.jsp" class="menu__item"
@@ -54,6 +57,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                             <a href="${ctx}/checkout.jsp" class="menu__item"
                                 >Thanh toán</a
                             >
+                            <a href="${ctx}/faq.jsp" class="menu__item">FAQ</a>
                         </div>
                     </div>
 
@@ -62,7 +66,9 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                             <i class="ri-shopping-cart-fill"></i>
                             <span class="cart__badge">1</span>
                         </span>
-                        <span class="user"><i class="ri-user-fill"></i></span>
+                        <span class="user">
+                            <i class="ri-user-fill"></i>
+                        </span>
                     </div>
                 </div>
             </div>
