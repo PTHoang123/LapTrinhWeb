@@ -110,5 +110,101 @@ public class ProductDAO {
             }
         return null;
     }
+    public int countProducts(String q) {
+        LOG.info("[ProductDAO] countProducts(q=" + q + ") called");
 
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT COUNT(DISTINCT p.product_id) ");
+        sql.append("FROM products p ");
+        sql.append("WHERE 1=1 ");
+
+        List<Object> params = new ArrayList<>();
+
+        if (q != null && !q.trim().isEmpty()) {
+            sql.append(" AND LOWER(p.name) LIKE ? ");
+            params.add("%" + q.trim().toLowerCase() + "%");
+        }
+
+        try (Connection c = Db.getConnection()) {
+            logCurrentDatabase(c);
+
+            try (PreparedStatement ps = c.prepareStatement(sql.toString())) {
+                bind(ps, params);
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) return rs.getInt(1);
+                }
+            }
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, "[ProductDAO] countProducts failed", e);
+        }
+        return 0;
+    }
+
+    public List<Product> getProducts(int page, int pageSize, String q, String sort) {
+        LOG.info("[ProductDAO] getProducts(page=" + page + ", pageSize=" + pageSize + ", q=" + q + ", sort=" + sort + ")");
+
+        List<Product> list = new ArrayList<>();
+        int offset = (page - 1) * pageSize;
+
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT p.product_id, p.name, p.price, i.url ");
+        sql.append("FROM products p ");
+        sql.append("LEFT JOIN products_img i ");
+        sql.append("  ON p.product_id = i.product_id AND i.is_primary = 1 ");
+        sql.append("WHERE 1=1 ");
+
+        List<Object> params = new ArrayList<>();
+
+        if (q != null && !q.trim().isEmpty()) {
+            sql.append(" AND LOWER(p.name) LIKE ? ");
+            params.add("%" + q.trim().toLowerCase() + "%");
+        }
+
+        sql.append(" ORDER BY ").append(orderBy(sort));
+        sql.append(" LIMIT ? OFFSET ? ");
+        params.add(pageSize);
+        params.add(offset);
+
+        try (Connection c = Db.getConnection()) {
+            logCurrentDatabase(c);
+
+            try (PreparedStatement ps = c.prepareStatement(sql.toString())) {
+                bind(ps, params);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        list.add(new Product(
+                                rs.getInt("product_id"),
+                                rs.getString("name"),
+                                rs.getDouble("price"),
+                                rs.getString("url")
+                        ));
+                    }
+                }
+            }
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, "[ProductDAO] getProducts (filtered) failed", e);
+        }
+
+        return list;
+    }
+
+    private static String orderBy(String sort) {
+        // whitelist only (prevents SQL injection)
+        if (sort == null || sort.trim().isEmpty()) return "p.product_id DESC";
+        switch (sort) {
+            case "price_asc":
+                return "p.price ASC, p.product_id DESC";
+            case "price_desc":
+                return "p.price DESC, p.product_id DESC";
+            default:
+                return "p.product_id DESC";
+        }
+    }
+
+    private static void bind(PreparedStatement ps, List<Object> params) throws SQLException {
+        for (int i = 0; i < params.size(); i++) {
+            ps.setObject(i + 1, params.get(i));
+        }
+    }
 }
