@@ -157,7 +157,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                         </td>
 
                                         <td class="cell-actions">
-                                            <!-- later: remove/update buttons -->
+                                            <a
+                                                class="btn btn-danger"
+                                                href="${ctx}/cart/remove?productId=${it.id}"
+                                                >Xoá</a
+                                            >
+                                            <a href="">cập nhật</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
