@@ -32,5 +32,39 @@
         <servlet-name>ProductDetailServlet</servlet-name>
         <url-pattern>/product</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CartAddServlet</servlet-name>
+        <servlet-class>controller.CartAddServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>CartAddServlet</servlet-name>
+        <url-pattern>/cart/add</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CartUpdateServlet</servlet-name>
+        <servlet-class>controller.CartUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartUpdateServlet</servlet-name>
+        <url-pattern>/cart/update</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartRemoveServlet</servlet-name>
+        <servlet-class>controller.CartRemoveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartRemoveServlet</servlet-name>
+        <url-pattern>/cart/remove</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartClearServlet</servlet-name>
+        <servlet-class>controller.CartClearServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartClearServlet</servlet-name>
+        <url-pattern>/cart/clear</url-pattern>
+    </servlet-mapping>
 </web-app>
