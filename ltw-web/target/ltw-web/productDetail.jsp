@@ -120,18 +120,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                     Mô tả:
                                     <c:out value="${product.description}" />
                                 </p>
-
-                                <div class="quantity-section">
-                                    <label for="quantity">Số lượng:</label>
-                                    <input
-                                        id="quantity"
-                                        name="quantity"
-                                        class="quantity-input"
-                                        type="number"
-                                        min="1"
-                                        value="1"
-                                    />
-                                </div>
                             </div>
 
                             <form method="post" action="${ctx}/cart/add">

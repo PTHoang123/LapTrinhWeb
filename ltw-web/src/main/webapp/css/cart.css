@@ -332,28 +332,64 @@ i {
 /* =========================
    Footer (keep compatible)
    ========================= */
+
 .footer {
-    padding: 48px 0;
-    background: var(--brand);
+    height: 142px;
+    padding: 50px 0;
+    background: #88bf3d;
     display: flex;
     text-align: start;
     justify-content: center;
     gap: 6rem;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
-.footer__logo h5,
+.footer__logo img {
+    width: 120px;
+    margin-bottom: 1.5rem;
+}
+
+.footer__logo h5 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.footer__logo p {
+    font-size: 0.9rem;
+    color: #fff;
+    line-height: 29px;
+    max-width: 320px;
+}
+
 .footer__title {
+    font-size: 1.1rem;
     color: #fff;
-    font-weight: 800;
-    margin: 0 0 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
-.footer__logo p,
-.delivery__time-item p,
+.deliver__time-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.delivery__time-item {
+    display: flex;
+    gap: 0.7rem;
+    align-items: baseline;
+}
+
 .delivery__time-item span {
+    font-weight: 600;
     color: #fff;
+}
+
+.delivery__time-item p {
+    color: #fff;
+    margin: 0;
 }
 
 .newsletter {
@@ -362,19 +398,25 @@ i {
     align-items: center;
     gap: 8px;
 }
+
 .newsletter input {
     padding: 8px 12px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     outline: none;
 }
-.newsletter input::placeholder {
-    color: rgba(255, 255, 255, 0.8);
-}
-.newsletter i {
-    color: #fff;
+
+.newsletter span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
+.newsletter i {
+    font-size: 1.1rem;
+    color: #fff;
+}
 /* =========================
    Responsive
    ========================= */

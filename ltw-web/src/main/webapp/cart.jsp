@@ -184,6 +184,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                         </h3>
 
                         <div class="cart-actions">
+                            <a class="btn btn-danger" href="${ctx}/cart/clear"
+                                >Xoá tất cả</a
+                            >
+                            <a class="btn btn-primary" href="${ctx}/checkout"
+                                >Thanh toán</a
+                            >
                             <a class="btn btn-ghost" href="${ctx}/products"
                                 >Tiếp tục mua</a
                             >
