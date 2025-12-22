@@ -107,20 +107,13 @@
     <div class="product-filters">
       <div class="product-filters-left">
         <form method="get" action="${ctx}/products" style="display:flex; gap:12px; flex-wrap:wrap;">
-          <input
-            class="product-search-input"
-            type="text"
-            name="q"
-            value="<c:out value='${param.q}'/>"
-            placeholder="Search products..."
-          />
+            <input class="product-search-input" type="text" name="q" value="<c:out value='${q}'/>" placeholder="Search products..." />
 
-          <select class="product-select" name="sort">
-            <option value="" <c:if test="${empty param.sort}">selected</c:if>>Sort: Default</option>
-            <option value="new" <c:if test="${param.sort == 'new'}">selected</c:if>>Newest</option>
-            <option value="price_asc" <c:if test="${param.sort == 'price_asc'}">selected</c:if>>Price: Low → High</option>
-            <option value="price_desc" <c:if test="${param.sort == 'price_desc'}">selected</c:if>>Price: High → Low</option>
-          </select>
+            <select class="product-select" name="sort">
+              <option value="" <c:if test="${empty sort}">selected</c:if>>Sort: Default</option>
+              <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Price: Low → High</option>
+              <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Price: High → Low</option>
+            </select>
 
           <button class="order__btn" type="submit" style="border:none;">Apply</button>
         </form>
