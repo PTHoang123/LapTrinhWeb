@@ -3,6 +3,7 @@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%@ taglib
 uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="cart" value="${sessionScope.CART}" />
 <fmt:setLocale value="vi_VN" />
 
 <!DOCTYPE html>
@@ -16,7 +17,10 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
             href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="${ctx}/css/cart.css" />
+        <link
+            rel="stylesheet"
+            href="${ctx}/css/cart.css?v=<%=System.currentTimeMillis()%>"
+        />
     </head>
     <body>
         <!-- HEADER -->
@@ -62,10 +66,14 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                     </div>
 
                     <div class="nav__right">
-                        <span class="cart__icon">
+                        <a href="${ctx}/cart.jsp" aria-label="Cart">
                             <i class="ri-shopping-cart-fill"></i>
-                            <span class="cart__badge">1</span>
-                        </span>
+                            <span class="cart__badge">
+                                <c:out
+                                    value="${empty cart ? 0 : cart.totalQuantity}"
+                                />
+                            </span>
+                        </a>
                         <span class="user">
                             <i class="ri-user-fill"></i>
                         </span>
@@ -86,6 +94,14 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                     <c:set var="cart" value="${sessionScope.CART}" />
 
                     <table class="cart-table">
+                        <colgroup>
+                            <col class="col-img" />
+                            <col class="col-name" />
+                            <col class="col-price" />
+                            <col class="col-qty" />
+                            <col class="col-total" />
+                            <col class="col-actions" />
+                        </colgroup>
                         <thead>
                             <tr>
                                 <th>Ảnh</th>
@@ -156,13 +172,52 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                             VND
                                         </td>
 
+                                        <!-- ONE action cell only -->
                                         <td class="cell-actions">
-                                            <a
-                                                class="btn btn-danger"
-                                                href="${ctx}/cart/remove?productId=${it.id}"
-                                                >Xoá</a
-                                            >
-                                            <a href="">cập nhật</a>
+                                            <div class="actions-wrap">
+                                                <form
+                                                    method="post"
+                                                    action="${ctx}/cart/update"
+                                                    class="update-form"
+                                                >
+                                                    <input
+                                                        type="hidden"
+                                                        name="productId"
+                                                        value="${it.productId}"
+                                                    />
+                                                    <input
+                                                        class="qty-input"
+                                                        type="number"
+                                                        min="1"
+                                                        name="quantity"
+                                                        value="${it.quantity}"
+                                                    />
+                                                    <button
+                                                        class="btn btn-ghost"
+                                                        type="submit"
+                                                    >
+                                                        Update
+                                                    </button>
+                                                </form>
+
+                                                <form
+                                                    method="post"
+                                                    action="${ctx}/cart/remove"
+                                                    class="remove-form"
+                                                >
+                                                    <input
+                                                        type="hidden"
+                                                        name="productId"
+                                                        value="${it.productId}"
+                                                    />
+                                                    <button
+                                                        class="btn btn-danger"
+                                                        type="submit"
+                                                    >
+                                                        Remove
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -189,15 +244,19 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                         </h3>
 
                         <div class="cart-actions">
-                            <a class="btn btn-danger" href="${ctx}/cart/clear"
-                                >Xoá tất cả</a
-                            >
-                            <a class="btn btn-primary" href="${ctx}/checkout"
-                                >Thanh toán</a
-                            >
                             <a class="btn btn-ghost" href="${ctx}/products"
                                 >Tiếp tục mua</a
                             >
+
+                            <form
+                                method="post"
+                                action="${ctx}/cart/clear"
+                                style="display: inline"
+                            >
+                                <button class="btn btn-danger" type="submit">
+                                    Xóa toàn bộ
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

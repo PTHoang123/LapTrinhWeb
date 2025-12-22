@@ -1,4 +1,7 @@
 /Users/mac/LTW/ltw-web/src/main/java/controller/CartAddServlet.java
+/Users/mac/LTW/ltw-web/src/main/java/controller/CartClearServlet.java
+/Users/mac/LTW/ltw-web/src/main/java/controller/CartRemoveServlet.java
+/Users/mac/LTW/ltw-web/src/main/java/controller/CartUpdateServlet.java
 /Users/mac/LTW/ltw-web/src/main/java/controller/ProductDetailServlet.java
 /Users/mac/LTW/ltw-web/src/main/java/controller/ProductListServlet.java
 /Users/mac/LTW/ltw-web/src/main/java/dao/ProductDAO.java

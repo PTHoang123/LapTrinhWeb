@@ -1,6 +1,6 @@
 :root {
     --bg: #f6f7fb;
-    --surface: #ffffff;
+    --surface: #fff;
     --text: #1f2a37;
     --muted: #6b7280;
     --brand: #88bf3d;
@@ -43,7 +43,7 @@ a:hover {
 }
 
 /* =========================
-   Header (keep compatible)
+   HEADER
    ========================= */
 .header {
     position: sticky;
@@ -76,7 +76,6 @@ a:hover {
     margin: 0;
     font-size: 1.05rem;
     font-weight: 800;
-    letter-spacing: 0.2px;
     color: var(--brand-2);
 }
 
@@ -108,25 +107,35 @@ a:hover {
     gap: 14px;
 }
 
-i {
+/* Make icon links have a fixed clickable box */
+.nav__right a,
+.nav__right .user {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+}
+.nav__right a:hover,
+.nav__right .user:hover {
+    background: rgba(17, 24, 39, 0.06);
+}
+
+/* icons */
+.nav__right i {
     font-size: 1.35rem;
+    line-height: 1;
     cursor: pointer;
     color: var(--brand-2);
 }
 
-.cart__icon {
-    position: relative;
-    padding: 8px;
-    border-radius: 10px;
-}
-.cart__icon:hover {
-    background: rgba(17, 24, 39, 0.06);
-}
-
+/* badge pinned to the cart link box */
 .cart__badge {
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: -6px;
+    right: -6px;
     background: #df2020;
     color: #fff;
     min-width: 18px;
@@ -139,29 +148,25 @@ i {
     align-items: center;
     justify-content: center;
     border: 2px solid #fff;
-}
-
-/* Optional shrink behavior */
-.header__shrink .nav__wrapper {
-    height: 70px;
+    pointer-events: none;
 }
 
 /* =========================
-   Cart page layout
+   CART PAGE
    ========================= */
 .cart-page {
-    padding: 32px 0 44px;
+    padding: 28px 0 44px;
 }
 
 .cart-title {
-    margin: 22px 0 18px;
-    font-size: 1.6rem;
+    margin: 18px 0 14px;
+    font-size: 1.7rem;
     font-weight: 900;
     color: var(--brand-2);
-    letter-spacing: 0.2px;
 }
 
 .cart-surface {
+    width: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -170,83 +175,107 @@ i {
 }
 
 /* =========================
-   Table
+   TABLE (FULL WIDTH GREEN HEADER)
    ========================= */
 .cart-table {
     width: 100%;
+    table-layout: fixed; /* fills the whole surface reliably */
     border-collapse: collapse;
     background: var(--surface);
 }
 
+/* define sensible column widths so the header spans correctly */
+.cart-table col.col-img {
+    width: 110px;
+}
+.cart-table col.col-name {
+    width: auto;
+}
+.cart-table col.col-price {
+    width: 170px;
+}
+.cart-table col.col-qty {
+    width: 120px;
+}
+.cart-table col.col-total {
+    width: 190px;
+}
+.cart-table col.col-actions {
+    width: 360px;
+} /* update + remove */
+
 .cart-table thead th {
-    text-align: left;
+    background: var(--brand);
+    color: #fff;
+    padding: 14px 12px;
     font-size: 0.78rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #fff;
-    background: var(--brand);
-    padding: 14px 14px;
+    white-space: nowrap;
+    text-align: left;
 }
 
 .cart-table td {
-    padding: 14px;
+    padding: 16px 12px;
     border-bottom: 1px solid var(--border);
     vertical-align: middle;
-    font-weight: 650;
     color: var(--brand-2);
+    font-weight: 650;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cart-table tbody tr:hover {
     background: rgba(17, 24, 39, 0.02);
 }
 
-.cart-table .cell-img {
-    width: 90px;
-}
-.cart-table img {
-    width: 72px;
-    height: 72px;
-    border-radius: 12px;
+.cell-img img {
+    width: 76px;
+    height: 76px;
+    border-radius: 14px;
     object-fit: cover;
     border: 1px solid var(--border);
     background: #fff;
 }
 
-.cart-table .cell-name {
-    max-width: 360px;
-    font-weight: 800;
+.cell-name {
+    font-weight: 900;
     color: #111827;
+    white-space: nowrap;
 }
 
-.cart-table .cell-price,
-.cart-table .cell-total {
-    white-space: nowrap;
+.cell-price,
+.cell-total {
     color: #0f172a;
-}
-
-.cart-table .cell-qty {
     white-space: nowrap;
 }
 
-/* Empty row */
 .cart-empty {
     text-align: center;
     color: var(--muted);
-    font-weight: 700;
-    padding: 22px 14px;
+    font-weight: 800;
+    padding: 22px 12px;
 }
 
 /* =========================
-   Quantity input / actions
+   ACTIONS / INPUTS
    ========================= */
+.actions-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 .qty-input {
-    width: 84px;
+    width: 92px;
     padding: 8px 10px;
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 12px;
     outline: none;
     background: #fff;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--brand-2);
 }
 .qty-input:focus {
@@ -258,14 +287,12 @@ i {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     height: 40px;
-    padding: 0 14px;
-    border: 1px solid transparent;
-    border-radius: 12px;
+    padding: 0 16px;
+    border-radius: 14px;
+    font-weight: 900;
     cursor: pointer;
-    font-weight: 800;
-    text-decoration: none;
+    border: 1px solid transparent;
     transition: transform 0.06s ease, background 0.16s ease,
         border-color 0.16s ease;
     user-select: none;
@@ -274,12 +301,14 @@ i {
     transform: translateY(1px);
 }
 
-.btn-primary {
-    background: var(--brand);
-    color: #fff;
+.btn-ghost {
+    background: #fff;
+    border-color: var(--border);
+    color: var(--brand-2);
 }
-.btn-primary:hover {
-    background: #76a834;
+.btn-ghost:hover {
+    border-color: rgba(136, 191, 61, 0.45);
+    background: rgba(136, 191, 61, 0.1);
 }
 
 .btn-danger {
@@ -290,35 +319,26 @@ i {
     background: #c92f3e;
 }
 
-.btn-ghost {
-    background: #fff;
-    border-color: var(--border);
-    color: var(--brand-2);
-}
-.btn-ghost:hover {
-    border-color: rgba(136, 191, 61, 0.45);
-    background: rgba(136, 191, 61, 0.08);
-}
-
 /* =========================
-   Summary area
+   SUMMARY
    ========================= */
 .cart-summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 14px;
     padding: 16px 14px;
     background: #fff;
 }
 
 .cart-summary h3 {
     margin: 0;
-    font-size: 1.05rem;
-    font-weight: 900;
+    font-size: 1.1rem;
+    font-weight: 1000;
     color: var(--brand-2);
 }
-.cart-summary .amount {
+
+.amount {
     color: #0f172a;
     white-space: nowrap;
 }
@@ -330,104 +350,55 @@ i {
 }
 
 /* =========================
-   Footer (keep compatible)
+   FOOTER (keep your content, but more flexible)
    ========================= */
-
 .footer {
-    height: 142px;
     padding: 50px 0;
-    background: #88bf3d;
+    background: var(--brand);
     display: flex;
-    text-align: start;
     justify-content: center;
     gap: 6rem;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 22px;
 }
-
-.footer__logo img {
-    width: 120px;
-    margin-bottom: 1.5rem;
-}
-
-.footer__logo h5 {
-    color: #fff;
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 15px;
-}
-
-.footer__logo p {
-    font-size: 0.9rem;
-    color: #fff;
-    line-height: 29px;
-    max-width: 320px;
-}
-
+.footer__logo h5,
 .footer__title {
-    font-size: 1.1rem;
     color: #fff;
-    font-weight: 600;
-    margin-bottom: 12px;
+    font-weight: 900;
+    margin: 0 0 12px;
 }
-
-.deliver__time-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.delivery__time-item {
-    display: flex;
-    gap: 0.7rem;
-    align-items: baseline;
-}
-
+.footer__logo p,
+.delivery__time-item p,
 .delivery__time-item span {
-    font-weight: 600;
     color: #fff;
 }
 
-.delivery__time-item p {
-    color: #fff;
-    margin: 0;
-}
-
-.newsletter {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.newsletter input {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-}
-
-.newsletter span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.newsletter i {
-    font-size: 1.1rem;
-    color: #fff;
-}
 /* =========================
-   Responsive
+   RESPONSIVE
    ========================= */
 @media (max-width: 900px) {
+    .cart-table col.col-actions {
+        width: 280px;
+    }
+}
+
+@media (max-width: 760px) {
     .menu {
         gap: 10px;
     }
+    .cart-summary {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .cart-actions {
+        justify-content: flex-end;
+    }
+
+    /* Mobile stack table rows */
     .cart-table thead {
         display: none;
     }
-
     .cart-table,
     .cart-table tbody,
     .cart-table tr,
@@ -435,31 +406,92 @@ i {
         display: block;
         width: 100%;
     }
-
     .cart-table tr {
-        border-bottom: 1px solid var(--border);
         padding: 12px 12px;
+        border-bottom: 1px solid var(--border);
     }
-
     .cart-table td {
         border: none;
         padding: 8px 0;
     }
-
-    .cart-table .cell-img {
-        width: auto;
-    }
-    .cart-table img {
-        width: 88px;
-        height: 88px;
-    }
-
-    .cart-summary {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .cart-actions {
-        justify-content: flex-end;
+    .actions-wrap {
+        justify-content: flex-start;
     }
 }
+
+/* ...existing code... */
+
+/* ===== FIX 1: Badge always pins to the cart icon ===== */
+.nav__right > a[aria-label="Cart"] {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+}
+
+.nav__right > a[aria-label="Cart"] .cart__badge {
+    position: absolute !important;
+    top: -6px !important;
+    right: -6px !important;
+}
+
+/* ===== FIX 2: Green header fills the cart surface ===== */
+.cart-surface {
+    width: 100%;
+}
+
+.cart-table {
+    width: 100% !important;
+    table-layout: fixed !important;
+}
+
+/* Ensure colgroup widths actually apply */
+.cart-table col.col-img {
+    width: 110px;
+}
+.cart-table col.col-price {
+    width: 170px;
+}
+.cart-table col.col-qty {
+    width: 120px;
+}
+.cart-table col.col-total {
+    width: 190px;
+}
+.cart-table col.col-actions {
+    width: 380px;
+}
+
+/* ...existing code... */
+
+/* action cell layout */
+.cell-actions {
+    text-align: right;
+}
+
+.actions-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.update-form,
+.remove-form {
+    margin: 0;
+}
+
+/* Make sure the cart badge pins to the cart <a> */
+.nav__right > a[aria-label="Cart"] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+}
+/* Make sure the cart badge pins to the cart <a> */
