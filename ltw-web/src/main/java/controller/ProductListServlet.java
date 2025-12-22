@@ -26,17 +26,33 @@ public class ProductListServlet extends HttpServlet {
             try { page = Integer.parseInt(pageParam); } catch (NumberFormatException ignored) {}
         }
 
-        int totalProducts = productDAO.getTotalProducts();
-        System.out.println("[ProductListServlet] totalProducts=" + totalProducts);
+        String q = trimToNull(request.getParameter("q"));
+        String sort = trimToNull(request.getParameter("sort"));
+        if (sort == null) sort = "";
 
+        int totalProducts = productDAO.countProducts(q);
         int totalPages = (int) Math.ceil((double) totalProducts / pageSize);
-        List<Product> products = productDAO.getProducts(page, pageSize);
-        System.out.println("[ProductListServlet] products.size=" + (products == null ? "null" : products.size()));
+
+        if (totalPages == 0) totalPages = 1;
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+
+        List<Product> products = productDAO.getProducts(page, pageSize, q, sort);
 
         request.setAttribute("products", products);
         request.setAttribute("currentPage", page);
         request.setAttribute("totalPages", totalPages);
 
+
+        request.setAttribute("q", q);
+        request.setAttribute("sort", sort);
+
         request.getRequestDispatcher("/products.jsp").forward(request, response);
+    }
+
+    private static String trimToNull(String s) {
+        if (s == null) return null;
+        String t = s.trim();
+        return t.isEmpty() ? null : t;
     }
 }
