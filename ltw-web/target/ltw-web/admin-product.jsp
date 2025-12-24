@@ -1,11 +1,17 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%
-String ctx = request.getContextPath(); %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@
+taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> <% String ctx =
+request.getContextPath(); %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./css/admin-user.css" />
+        <link
+            rel="stylesheet"
+            href="<%= ctx %>/css/admin-product.css?v=<%=System.currentTimeMillis()%>"
+        />
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -83,28 +89,22 @@ String ctx = request.getContextPath(); %>
                         </div>
                     </div>
                     <div class="admin-filters">
-                        <div class="admin-filters__left">
+                        <form method="get" action="<%= ctx %>/admin/products" class="admin-filters__left" style="display:flex; gap:12px; flex-wrap:wrap;">
                             <input
                                 type="text"
+                                name="q"
                                 class="admin-input admin-input--search"
                                 placeholder="Tìm theo tên sản phẩm..."
+                                value="<c:out value='${q}'/>"
                             />
-                            <select class="admin-select">
-                                <option value="">Tất cả danh mục</option>
-                                <option>Phân bón hữu cơ</option>
-                                <option>Dụng cụ làm vườn</option>
-                                <option>Hạt giống</option>
+                            <select class="admin-select" name="sort">
+                            <option value="" <c:if test="${empty sort}">selected</c:if>>Mặc định</option>
+                            <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Giá tăng dần</option>
+                            <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Giá giảm dần</option>
                             </select>
-                            <select class="admin-select">
-                                <option value="">Tất cả trạng thái</option>
-                                <option value="active">Đang bán</option>
-                                <option value="hidden">Ẩn</option>
-                                <option value="out">Hết hàng</option>
-                            </select>
-                        </div>
-                        <div class="admin-filters__right">
-                            <button class="btn btn-outline">Làm mới</button>
-                        </div>
+                            <button class="btn btn-outline" type="submit">Lọc</button>
+                            <a class="btn btn-outline" href="<%= ctx %>/admin/products" style="text-decoration:none;">Làm mới</a>
+                        </form>
                     </div>
                     <div class="admin-table-wrapper">
                         <table class="admin-table">
@@ -120,114 +120,93 @@ String ctx = request.getContextPath(); %>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
+                            
                             <tbody>
-                                <tr>
-                                    <td>#101</td>
-                                    <td>
-                                        <img
-                                            src="<%= ctx %>/assets/product1.png"
-                                            alt="Product"
-                                            class="admin-table__thumb"
-                                        />
-                                    </td>
-                                    <td>Phân bón hữu cơ cao cấp</td>
-                                    <td>Phân bón hữu cơ</td>
-                                    <td>250.000đ</td>
-                                    <td>120</td>
-                                    <td>
-                                        <span class="badge badge-success"
-                                            >Đang bán</span
-                                        >
-                                    </td>
-                                    <td>
-                                        <button class="btn-icon btn-icon--edit">
-                                            <i class="ri-edit-2-line"></i>
-                                        </button>
-                                        <button
-                                            class="btn-icon btn-icon--danger"
-                                        >
-                                            <i class="ri-delete-bin-6-line"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#102</td>
-                                    <td>
-                                        <img
-                                            src="<%= ctx %>/assets/product2.png"
-                                            alt="Product"
-                                            class="admin-table__thumb"
-                                        />
-                                    </td>
-                                    <td>Bút chì tái chế</td>
-                                    <td>Dụng cụ học tập</td>
-                                    <td>180.000đ</td>
-                                    <td>36</td>
-                                    <td>
-                                        <span class="badge badge-warning"
-                                            >Hết hàng</span
-                                        >
-                                    </td>
-                                    <td>
-                                        <button class="btn-icon btn-icon--edit">
-                                            <i class="ri-edit-2-line"></i>
-                                        </button>
-                                        <button
-                                            class="btn-icon btn-icon--danger"
-                                        >
-                                            <i class="ri-delete-bin-6-line"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#103</td>
-                                    <td>
-                                        <img
-                                            src="<%= ctx %>/assets/product1.png"
-                                            alt="Product"
-                                            class="admin-table__thumb"
-                                        />
-                                    </td>
-                                    <td>Cờ nút nhựa tái chế</td>
-                                    <td>Đồ dùng trang trí</td>
-                                    <td>35.000đ</td>
-                                    <td>250</td>
-                                    <td>
-                                        <span class="badge badge-secondary"
-                                            >Đang ẩn</span
-                                        >
-                                    </td>
-                                    <td>
-                                        <button class="btn-icon btn-icon--edit">
-                                            <i class="ri-edit-2-line"></i>
-                                        </button>
-                                        <button
-                                            class="btn-icon btn-icon--danger"
-                                        >
-                                            <i class="ri-delete-bin-6-line"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                <c:if test="${empty products}">
+                                    <tr>
+                                        <td colspan="8" style="padding:16px;">Không có sản phẩm.</td>
+                                    </tr>
+                                </c:if>
+                            
+                                <c:forEach var="p" items="${products}">
+                                    <tr>
+                                        <td>#<c:out value="${p.id}"/></td>
+                                        <td>
+                                            <c:choose>
+                                            <c:when test="${not empty p.imageUrl}">
+                                                <img src="<%= ctx %>/<c:out value='${p.imageUrl}'/>" alt="Product" class="admin-table__thumb" />
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img src="<%= ctx %>/assets/placeholder.png" alt="No image" class="admin-table__thumb" />
+                                            </c:otherwise>
+                                        </c:choose>
+                                        </td>
+                                        <td><c:out value="${p.name}"/></td>
+                                    
+                                        <!-- You don't have these fields in Product model yet -->
+                                        <td>-</td>
+                                        <td>
+                                            <fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/>đ
+                                        </td>
+                                        <td>-</td>
+                                        <td><span class="badge badge-success">Đang bán</span></td>
+                                    
+                                        <td>
+                                            <a class="btn-icon btn-icon--edit" href="<%= ctx %>/admin/product/edit?id=${p.id}">
+                                                <i class="ri-edit-2-line"></i>
+                                            </a>
+                                            <form method="post" action="<%= ctx %>/admin/product/delete" style="display:inline;">
+                                                <input type="hidden" name="id" value="${p.id}"/>
+                                                <button class="btn-icon btn-icon--danger" type="submit">
+                                                    <i class="ri-delete-bin-6-line"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
 
                     <!-- Simple pagination -->
-                    <div class="admin-pagination">
-                        <button class="btn btn-outline" disabled>
-                            <i class="ri-arrow-left-s-line"></i>
-                            Trước
-                        </button>
-                        <div class="admin-pagination__pages">
-                            <button class="page-btn active">1</button>
-                            <button class="page-btn">2</button>
-                            <button class="page-btn">3</button>
+                    <c:if test="${totalPages > 1}">
+                            <div class="admin-pagination">
+                                <c:choose>
+                                    <c:when test="${currentPage > 1}">
+                                        <a class="btn btn-outline" href="<%= ctx %>/admin/products?page=${currentPage-1}&q=${q}&sort=${sort}">
+                                        <i class="ri-arrow-left-s-line"></i> Trước
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="btn btn-outline" disabled>
+                                            <i class="ri-arrow-left-s-line"></i> Trước
+                                        </button>
+                                    </c:otherwise>
+                                </c:choose>
+                      
+                                <div class="admin-pagination__pages">
+                                    <c:forEach var="i" begin="1" end="${totalPages}">
+                                        <a class="page-btn ${i == currentPage ? 'active' : ''}"
+                                        href="<%= ctx %>/admin/products?page=${i}&q=${q}&sort=${sort}">
+                                        <c:out value="${i}"/>
+                                        </a>
+                                    </c:forEach>
+                                </div>
+
+                                <c:choose>
+                                    <c:when test="${currentPage < totalPages}">
+                                        <a class="btn btn-outline" href="<%= ctx %>/admin/products?page=${currentPage+1}&q=${q}&sort=${sort}">
+                                        Sau <i class="ri-arrow-right-s-line"></i>
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="btn btn-outline" disabled>
+                                        Sau <i class="ri-arrow-right-s-line"></i>
+                                        </button>
+                                    </c:otherwise>
+                            </c:choose>
                         </div>
-                        <button class="btn btn-outline">
-                            Sau
-                            <i class="ri-arrow-right-s-line"></i>
-                        </button>
-                    </div>
+                    </c:if>
                 </div>
             </div>
         </main>
