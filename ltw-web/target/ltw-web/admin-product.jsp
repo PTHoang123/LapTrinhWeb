@@ -28,7 +28,9 @@ String ctx = request.getContextPath(); %>
 
                     <div class="navigation">
                         <div class="menu">
-                            <a href="<%= ctx %>/home.jsp" class="menu__item active__menu"
+                            <a
+                                href="<%= ctx %>/home.jsp"
+                                class="menu__item active__menu"
                                 >Trang chủ</a
                             >
                             <a href="/about" class="menu__item">Giới thiệu</a>
@@ -37,7 +39,9 @@ String ctx = request.getContextPath(); %>
                                 >Sản phẩm</a
                             >
                             <a href="/cart" class="menu__item">Giỏ hàng</a>
-                            <a href="<%= ctx %>//checkout.jsp" class="menu__item"
+                            <a
+                                href="<%= ctx %>//checkout.jsp"
+                                class="menu__item"
                                 >Thanh toán</a
                             >
                         </div>
