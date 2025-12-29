@@ -485,6 +485,10 @@ a {
 }
 
 .page-btn {
+    color: #000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-width: 32px;
     height: 32px;
     border-radius: 50%;

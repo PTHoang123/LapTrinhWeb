@@ -489,6 +489,11 @@ a {
 }
 
 .page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
     min-width: 32px;
     height: 32px;
     border-radius: 50%;

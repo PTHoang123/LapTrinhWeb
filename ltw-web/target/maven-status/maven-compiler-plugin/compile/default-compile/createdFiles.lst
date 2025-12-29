@@ -1,6 +1,7 @@
 util/DbSmokeTest.class
 util/Db.class
 dao/ProductDAO.class
+controller/AdminProductListServlet.class
 model/Product.class
 controller/CartRemoveServlet.class
 controller/CartAddServlet.class
