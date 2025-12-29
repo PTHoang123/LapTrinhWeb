@@ -90,4 +90,8 @@
         <servlet-name>CategoriesController</servlet-name>
         <servlet-class>controller.CategoriesController</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>CategoriesController</servlet-name>
+        <url-pattern>/categories</url-pattern>
+    </servlet-mapping>
 </web-app>
