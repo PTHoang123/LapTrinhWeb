@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="catQS" value="${not empty param.categoryId ? '&amp;categoryId='.concat(param.categoryId) : ''}" />
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -79,8 +80,11 @@
           <a href="${ctx}/home.jsp" class="menu__item active__menu">Trang chủ</a>
           <a href="${ctx}/about.jsp" class="menu__item">Giới thiệu</a>
           <a href="${ctx}/news.jsp" class="menu__item">Tin tức</a>
-          <a href="${ctx}/categories.jsp" class="menu__item">Danh mục</a>
-          <a href="${ctx}/product.jsp" class="menu__item">Sản phẩm</a>
+
+          <!-- UPDATED: use servlet routes -->
+          <a href="${ctx}/categories" class="menu__item">Danh mục</a>
+          <a href="${ctx}/products" class="menu__item">Sản phẩm</a>
+
           <a href="${ctx}/cart.jsp" class="menu__item">Giỏ hàng</a>
           <a href="${ctx}/checkout.jsp" class="menu__item">Thanh toán</a>
           <a href="${ctx}/faq.jsp" class="menu__item">FAQ</a>
@@ -107,13 +111,25 @@
     <div class="product-filters">
       <div class="product-filters-left">
         <form method="get" action="${ctx}/products" style="display:flex; gap:12px; flex-wrap:wrap;">
-            <input class="product-search-input" type="text" name="q" value="<c:out value='${q}'/>" placeholder="Search products..." />
 
-            <select class="product-select" name="sort">
-              <option value="" <c:if test="${empty sort}">selected</c:if>>Sort: Default</option>
-              <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Price: Low → High</option>
-              <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Price: High → Low</option>
-            </select>
+          <!-- UPDATED: keep categoryId when searching/sorting -->
+          <c:if test="${not empty param.categoryId}">
+            <input type="hidden" name="categoryId" value="${param.categoryId}" />
+          </c:if>
+
+          <input
+            class="product-search-input"
+            type="text"
+            name="q"
+            value="<c:out value='${q}'/>"
+            placeholder="Search products..."
+          />
+
+          <select class="product-select" name="sort">
+            <option value="" <c:if test="${empty sort}">selected</c:if>>Sort: Default</option>
+            <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Price: Low → High</option>
+            <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Price: High → Low</option>
+          </select>
 
           <button class="order__btn" type="submit" style="border:none;">Apply</button>
         </form>
@@ -162,76 +178,78 @@
     </div>
 
     <!-- Pagination -->
-  <c:if test="${totalPages > 1}">
-    <div class="pagination">
+    <c:if test="${totalPages > 1}">
+      <div class="pagination">
 
-    <!-- Prev -->
-    <c:choose>
-      <c:when test="${currentPage > 1}">
-        <a href="${ctx}/products?page=${currentPage - 1}&q=${param.q}&sort=${param.sort}">Prev</a>
-      </c:when>
-      <c:otherwise>
-        <span class="disabled">Prev</span>
-      </c:otherwise>
-    </c:choose>
+        <!-- Prev -->
+        <c:choose>
+          <c:when test="${currentPage > 1}">
+            <!-- UPDATED: add ${catQS} -->
+            <a href="${ctx}/products?page=${currentPage - 1}&q=${param.q}&sort=${param.sort}${catQS}">Prev</a>
+          </c:when>
+          <c:otherwise>
+            <span class="disabled">Prev</span>
+          </c:otherwise>
+        </c:choose>
 
-    <!-- Windowed page links -->
-    <c:set var="start" value="${currentPage - 2}" />
-    <c:set var="end" value="${currentPage + 2}" />
+        <!-- Windowed page links -->
+        <c:set var="start" value="${currentPage - 2}" />
+        <c:set var="end" value="${currentPage + 2}" />
 
-    <c:if test="${start < 1}">
-      <c:set var="start" value="1" />
-    </c:if>
-    <c:if test="${end > totalPages}">
-      <c:set var="end" value="${totalPages}" />
-    </c:if>
+        <c:if test="${start < 1}">
+          <c:set var="start" value="1" />
+        </c:if>
+        <c:if test="${end > totalPages}">
+          <c:set var="end" value="${totalPages}" />
+        </c:if>
 
-    <!-- First page + left dots -->
-    <c:if test="${start > 1}">
-      <a href="${ctx}/products?page=1&q=${param.q}&sort=${param.sort}">1</a>
-      <c:if test="${start > 2}">
-        <span class="dots">…</span>
-      </c:if>
-    </c:if>
+        <!-- First page + left dots -->
+        <c:if test="${start > 1}">
+          <a href="${ctx}/products?page=1&q=${param.q}&sort=${param.sort}${catQS}">1</a>
+          <c:if test="${start > 2}">
+            <span class="dots">…</span>
+          </c:if>
+        </c:if>
 
-    <!-- Page numbers (safe active class) -->
-    <c:forEach var="i" begin="${start}" end="${end}">
-      <c:choose>
-        <c:when test="${i == currentPage}">
-          <a href="${ctx}/products?page=${i}&q=${param.q}&sort=${param.sort}" class="active">
-            <c:out value="${i}" />
+        <!-- Page numbers -->
+        <c:forEach var="i" begin="${start}" end="${end}">
+          <c:choose>
+            <c:when test="${i == currentPage}">
+              <a href="${ctx}/products?page=${i}&q=${param.q}&sort=${param.sort}${catQS}" class="active">
+                <c:out value="${i}" />
+              </a>
+            </c:when>
+            <c:otherwise>
+              <a href="${ctx}/products?page=${i}&q=${param.q}&sort=${param.sort}${catQS}">
+                <c:out value="${i}" />
+              </a>
+            </c:otherwise>
+          </c:choose>
+        </c:forEach>
+
+        <!-- Right dots + last page -->
+        <c:if test="${end < totalPages}">
+          <c:if test="${end < totalPages - 1}">
+            <span class="dots">…</span>
+          </c:if>
+          <a href="${ctx}/products?page=${totalPages}&q=${param.q}&sort=${param.sort}${catQS}">
+            <c:out value="${totalPages}" />
           </a>
-        </c:when>
-        <c:otherwise>
-          <a href="${ctx}/products?page=${i}&q=${param.q}&sort=${param.sort}">
-            <c:out value="${i}" />
-          </a>
-        </c:otherwise>
-      </c:choose>
-    </c:forEach>
+        </c:if>
 
-    <!-- Right dots + last page -->
-    <c:if test="${end < totalPages}">
-      <c:if test="${end < totalPages - 1}">
-        <span class="dots">…</span>
-      </c:if>
-      <a href="${ctx}/products?page=${totalPages}&q=${param.q}&sort=${param.sort}">
-        <c:out value="${totalPages}" />
-      </a>
+        <!-- Next -->
+        <c:choose>
+          <c:when test="${currentPage < totalPages}">
+            <!-- UPDATED: add ${catQS} -->
+            <a href="${ctx}/products?page=${currentPage + 1}&q=${param.q}&sort=${param.sort}${catQS}">Next</a>
+          </c:when>
+          <c:otherwise>
+            <span class="disabled">Next</span>
+          </c:otherwise>
+        </c:choose>
+
+      </div>
     </c:if>
-
-    <!-- Next -->
-    <c:choose>
-      <c:when test="${currentPage < totalPages}">
-        <a href="${ctx}/products?page=${currentPage + 1}&q=${param.q}&sort=${param.sort}">Next</a>
-      </c:when>
-      <c:otherwise>
-        <span class="disabled">Next</span>
-      </c:otherwise>
-    </c:choose>
-
-    </div>
-  </c:if>
 
   </div>
 </main>
