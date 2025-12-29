@@ -84,5 +84,4 @@
         <servlet-name>AdminProductListServlet</servlet-name>
         <url-pattern>/admin/products</url-pattern>
     </servlet-mapping>
-
 </web-app>
