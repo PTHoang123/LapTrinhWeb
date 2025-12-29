@@ -68,7 +68,6 @@
         <url-pattern>/cart/clear</url-pattern>
     </servlet-mapping>
 
-<<<<<<< HEAD
     <servlet>
         <servlet-name>CategoriesController</servlet-name>
         <servlet-class>controller.CategoriesController</servlet-class>
@@ -77,8 +76,6 @@
         <servlet-name>CategoriesController</servlet-name>
         <url-pattern>/categories</url-pattern>
     </servlet-mapping>
-=======
->>>>>>> 0d6d81a (add class admin-product)
      <servlet>
         <servlet-name>AdminProductListServlet</servlet-name>
         <servlet-class>controller.AdminProductListServlet</servlet-class>
