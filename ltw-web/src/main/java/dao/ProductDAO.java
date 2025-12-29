@@ -213,7 +213,7 @@ public class ProductDAO {
             sql.append("AND p.category_id = ? ");
             params.add(categoryId);
         }
-        if (q != null && !q.isBlank()) {
+        if (q != null && !q.trim().isEmpty()) {
             sql.append("AND p.name LIKE ? ");
             params.add("%" + q.trim() + "%");
         }
@@ -246,7 +246,7 @@ public class ProductDAO {
             sql.append("AND p.category_id = ? ");
             params.add(categoryId);
         }
-        if (q != null && !q.isBlank()) {
+        if (q != null && !q.trim().isEmpty()) {
             sql.append("AND p.name LIKE ? ");
             params.add("%" + q.trim() + "%");
         }
