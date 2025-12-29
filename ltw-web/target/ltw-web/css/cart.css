@@ -1,0 +1,497 @@
+:root {
+    --bg: #f6f7fb;
+    --surface: #fff;
+    --text: #1f2a37;
+    --muted: #6b7280;
+    --brand: #88bf3d;
+    --brand-2: #212245;
+    --border: #e5e7eb;
+    --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+    --shadow-sm: 0 6px 16px rgba(16, 24, 40, 0.08);
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+        sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    color: var(--brand);
+}
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 78px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+.logo h5 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--brand-2);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+.menu a {
+    font-size: 0.98rem;
+    font-weight: 650;
+    color: var(--brand-2);
+    padding: 8px 10px;
+    border-radius: 10px;
+    transition: background 0.18s ease, color 0.18s ease;
+}
+.menu a:hover {
+    background: rgba(136, 191, 61, 0.12);
+}
+.active__menu {
+    color: var(--brand) !important;
+    background: rgba(136, 191, 61, 0.12);
+}
+
+.nav__right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Make icon links have a fixed clickable box */
+.nav__right a,
+.nav__right .user {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+}
+.nav__right a:hover,
+.nav__right .user:hover {
+    background: rgba(17, 24, 39, 0.06);
+}
+
+/* icons */
+.nav__right i {
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--brand-2);
+}
+
+/* badge pinned to the cart link box */
+.cart__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #df2020;
+    color: #fff;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    pointer-events: none;
+}
+
+/* =========================
+   CART PAGE
+   ========================= */
+.cart-page {
+    padding: 28px 0 44px;
+}
+
+.cart-title {
+    margin: 18px 0 14px;
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: var(--brand-2);
+}
+
+.cart-surface {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+/* =========================
+   TABLE (FULL WIDTH GREEN HEADER)
+   ========================= */
+.cart-table {
+    width: 100%;
+    table-layout: fixed; /* fills the whole surface reliably */
+    border-collapse: collapse;
+    background: var(--surface);
+}
+
+/* define sensible column widths so the header spans correctly */
+.cart-table col.col-img {
+    width: 110px;
+}
+.cart-table col.col-name {
+    width: auto;
+}
+.cart-table col.col-price {
+    width: 170px;
+}
+.cart-table col.col-qty {
+    width: 120px;
+}
+.cart-table col.col-total {
+    width: 190px;
+}
+.cart-table col.col-actions {
+    width: 360px;
+} /* update + remove */
+
+.cart-table thead th {
+    background: var(--brand);
+    color: #fff;
+    padding: 14px 12px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.cart-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+    color: var(--brand-2);
+    font-weight: 650;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cart-table tbody tr:hover {
+    background: rgba(17, 24, 39, 0.02);
+}
+
+.cell-img img {
+    width: 76px;
+    height: 76px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    background: #fff;
+}
+
+.cell-name {
+    font-weight: 900;
+    color: #111827;
+    white-space: nowrap;
+}
+
+.cell-price,
+.cell-total {
+    color: #0f172a;
+    white-space: nowrap;
+}
+
+.cart-empty {
+    text-align: center;
+    color: var(--muted);
+    font-weight: 800;
+    padding: 22px 12px;
+}
+
+/* =========================
+   ACTIONS / INPUTS
+   ========================= */
+.actions-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.qty-input {
+    width: 92px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    background: #fff;
+    font-weight: 800;
+    color: var(--brand-2);
+}
+.qty-input:focus {
+    border-color: rgba(136, 191, 61, 0.7);
+    box-shadow: 0 0 0 4px rgba(136, 191, 61, 0.18);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.06s ease, background 0.16s ease,
+        border-color 0.16s ease;
+    user-select: none;
+}
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-ghost {
+    background: #fff;
+    border-color: var(--border);
+    color: var(--brand-2);
+}
+.btn-ghost:hover {
+    border-color: rgba(136, 191, 61, 0.45);
+    background: rgba(136, 191, 61, 0.1);
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: #fff;
+}
+.btn-danger:hover {
+    background: #c92f3e;
+}
+
+/* =========================
+   SUMMARY
+   ========================= */
+.cart-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 14px;
+    background: #fff;
+}
+
+.cart-summary h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 1000;
+    color: var(--brand-2);
+}
+
+.amount {
+    color: #0f172a;
+    white-space: nowrap;
+}
+
+.cart-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* =========================
+   FOOTER (keep your content, but more flexible)
+   ========================= */
+.footer {
+    padding: 50px 0;
+    background: var(--brand);
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 22px;
+}
+.footer__logo h5,
+.footer__title {
+    color: #fff;
+    font-weight: 900;
+    margin: 0 0 12px;
+}
+.footer__logo p,
+.delivery__time-item p,
+.delivery__time-item span {
+    color: #fff;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 900px) {
+    .cart-table col.col-actions {
+        width: 280px;
+    }
+}
+
+@media (max-width: 760px) {
+    .menu {
+        gap: 10px;
+    }
+    .cart-summary {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .cart-actions {
+        justify-content: flex-end;
+    }
+
+    /* Mobile stack table rows */
+    .cart-table thead {
+        display: none;
+    }
+    .cart-table,
+    .cart-table tbody,
+    .cart-table tr,
+    .cart-table td {
+        display: block;
+        width: 100%;
+    }
+    .cart-table tr {
+        padding: 12px 12px;
+        border-bottom: 1px solid var(--border);
+    }
+    .cart-table td {
+        border: none;
+        padding: 8px 0;
+    }
+    .actions-wrap {
+        justify-content: flex-start;
+    }
+}
+
+/* ...existing code... */
+
+/* ===== FIX 1: Badge always pins to the cart icon ===== */
+.nav__right > a[aria-label="Cart"] {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+}
+
+.nav__right > a[aria-label="Cart"] .cart__badge {
+    position: absolute !important;
+    top: -6px !important;
+    right: -6px !important;
+}
+
+/* ===== FIX 2: Green header fills the cart surface ===== */
+.cart-surface {
+    width: 100%;
+}
+
+.cart-table {
+    width: 100% !important;
+    table-layout: fixed !important;
+}
+
+/* Ensure colgroup widths actually apply */
+.cart-table col.col-img {
+    width: 110px;
+}
+.cart-table col.col-price {
+    width: 170px;
+}
+.cart-table col.col-qty {
+    width: 120px;
+}
+.cart-table col.col-total {
+    width: 190px;
+}
+.cart-table col.col-actions {
+    width: 380px;
+}
+
+/* ...existing code... */
+
+/* action cell layout */
+.cell-actions {
+    text-align: right;
+}
+
+.actions-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.update-form,
+.remove-form {
+    margin: 0;
+}
+
+/* Make sure the cart badge pins to the cart <a> */
+.nav__right > a[aria-label="Cart"] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+}
+/* Make sure the cart badge pins to the cart <a> */

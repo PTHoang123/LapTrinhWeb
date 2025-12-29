@@ -8,6 +8,16 @@ INSERT INTO categories(name) VALUES
 ('Thời trang / phụ kiện tái chế'),
 ('Đồ gia dụng tái chế')
 ON DUPLICATE KEY UPDATE name = name;
+
+-- Update prices and descriptions
+UPDATE products
+SET
+  price = (FLOOR((RAND() * (5000000 - 100000 + 1)) / 1000) * 1000) + 100000,
+  description = CONCAT(
+    'Sản phẩm thân thiện môi trường, bền đẹp, dễ dùng. ',
+    'Phù hợp gia đình/văn phòng, bảo hành theo chính sách.'
+  );
+
 -- Default all to "Khác"
 UPDATE products
 SET category_id = (SELECT category_id FROM categories WHERE name='Khác');

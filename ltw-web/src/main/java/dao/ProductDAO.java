@@ -77,8 +77,10 @@ public class ProductDAO {
 
 
     public Product getProductById(int id) {
+        LOG.info("[ProductDAO] getProductById() id=" + id);
+
         String sql =
-            "SELECT p.product_id AS id, p.name, p.price, " +
+            "SELECT p.product_id AS id, p.name, p.price, p.description, " +
             "       (SELECT pi.url " +
             "        FROM products_img pi " +
             "        WHERE pi.product_id = p.product_id " +
@@ -90,6 +92,7 @@ public class ProductDAO {
         try (Connection c = Db.getConnection();
              PreparedStatement ps = c.prepareStatement(sql)) {
 
+            logCurrentDatabase(c);
             ps.setInt(1, id);
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -99,7 +102,8 @@ public class ProductDAO {
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getDouble("price"),
-                        rs.getString("imageUrl")
+                        rs.getString("imageUrl"),
+                        rs.getString("description")
                 );
             }
         } catch (Exception e) {
@@ -229,7 +233,7 @@ public class ProductDAO {
         }
     }
 
-        public List<Product> findActive(Integer categoryId, String q, String sort, int limit, int offset) throws SQLException {
+    public List<Product> findActive(Integer categoryId, String q, String sort, int limit, int offset) throws SQLException {
         StringBuilder sql = new StringBuilder(
             "SELECT p.product_id AS id, p.name, p.price, " +
             "       (SELECT pi.url " +
