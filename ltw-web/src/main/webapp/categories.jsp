@@ -146,8 +146,10 @@ String ctx = request.getContextPath(); List<Category>
                                     <strong><%= c.getProductCount() %></strong>
                                     sản phẩm
                                 </p>
+
+                                <!-- FIX: go to servlet /products -->
                                 <a
-                                    href="<%= ctx %>/product.jsp?categoryId=<%= c.getCategoryId() %>"
+                                    href="<%= ctx %>/products?categoryId=<%= c.getCategoryId() %>"
                                     class="category-link"
                                 >
                                     Xem sản phẩm
@@ -160,7 +162,6 @@ String ctx = request.getContextPath(); List<Category>
                         </section>
                     </div>
                 </main>
-
                 <!-- footer -->
                 <footer class="footer">
                     <div class="footer__logo">
