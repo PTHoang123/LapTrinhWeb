@@ -81,7 +81,9 @@
         <servlet-class>controller.AdminProductListServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CategoriesController</servlet-name>
-        <url-pattern>/categories</url-pattern>
+        <servlet-name>AdminProductListServlet</servlet-name>
+        <url-pattern>/admin/products</url-pattern>
     </servlet-mapping>
+
+
 </web-app>
