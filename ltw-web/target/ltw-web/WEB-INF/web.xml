@@ -67,4 +67,13 @@
         <servlet-name>CartClearServlet</servlet-name>
         <url-pattern>/cart/clear</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CategoriesController</servlet-name>
+        <servlet-class>controller.CategoriesController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CategoriesController</servlet-name>
+        <url-pattern>/categories</url-pattern>
+    </servlet-mapping>
 </web-app>
