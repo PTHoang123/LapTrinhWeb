@@ -7,6 +7,9 @@ controller/CartAddServlet.class
 controller/CartUpdateServlet.class
 controller/ProductListServlet.class
 controller/CartClearServlet.class
+controller/CategoriesController.class
+model/Category.class
 model/Cart.class
+dao/CategoryDAO.class
 model/CartItem.class
 controller/ProductDetailServlet.class
