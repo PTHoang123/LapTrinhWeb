@@ -1,0 +1,233 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%
+String ctx = request.getContextPath(); %>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/news.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+            rel="stylesheet"
+        />
+        <title>Foodyfi</title>
+    </head>
+    <body>
+        <!-- header -->
+        <header class="header">
+            <div class="container">
+                <div class="nav__wrapper">
+                    <div class="logo">
+                        <img
+                            class="logo-img"
+                            src="<%= ctx %>/assets/—Pngtree—green sprout leaf logo design_7431531.png"
+                            alt="logo"
+                        />
+                        <h5>Cyclefy</h5>
+                    </div>
+
+                    <div class="navigation">
+                        <div class="menu">
+                            <a href="<%= ctx %>/home.jsp" class="menu__item active__menu"
+                                >Trang chủ</a
+                            >
+                            <a href="<%= ctx %>//about.jsp" class="menu__item"
+                                >Giới thiệu</a
+                            >
+                            <a href="<%= ctx %>//baibao1.jsp" class="menu__item"
+                                >Tin tức</a
+                            >
+                            <a href="<%= ctx %>/categories.jsp" class="menu__item"
+                                >Danh mục</a
+                            >
+                            <a href="<%= ctx %>/product.jsp" class="menu__item"
+                                >Sản phẩm</a
+                            >
+                            <a href="<%= ctx %>//cart.jsp" class="menu__item">Giỏ hàng</a>
+
+                            <a href="<%= ctx %>//checkout.jsp" class="menu__item"
+                                >Thanh toán</a
+                            >
+                            <a href="<%= ctx %>//faq.jsp" class="menu__item">FAQ</a>
+                        </div>
+                    </div>
+
+                    <div class="nav__right">
+                        <span class="cart__icon">
+                            <i class="ri-shopping-cart-fill"></i>
+                            <span class="cart__badge">1</span>
+                        </span>
+                        <span class="user">
+                            <i class="ri-user-fill"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- News list section -->
+        <main class="news-page">
+            <div class="container">
+                <section class="news-hero">
+                    <h1 class="news-title">Tin tức & Bài viết</h1>
+                    <p class="news-subtitle">
+                        Cập nhật những tin tức mới nhất về nông nghiệp xanh, xu
+                        hướng trồng trọt và mẹo chăm sóc vườn.
+                    </p>
+                </section>
+
+                <section class="news-layout">
+                    <!-- Left: list of news -->
+                    <div class="news-list">
+                        <article class="news-item">
+                            <a href="<%= ctx %>/baibao1.jsp" class="news-thumb">
+                                <img
+                                    src="<%= ctx %>/images/IMG_5594-750x750.jpg"
+                                    alt="News"
+                                />
+                            </a>
+                            <div class="news-body">
+                                <a href="<%= ctx %>/baibao1.jsp" class="news-item-title"
+                                    >Tái chế nhựa – xu hướng sống xanh năm
+                                    2025</a
+                                >
+                                 <p class="news-meta">
+                                    Đăng ngày: 12/11/2025
+                                </p>
+                                <p class="news-excerpt">
+                                    Trong năm 2025, việc tái chế nhựa tiếp tục
+                                    trở thành một xu hướng sống xanh được đông
+                                    đảo người dân lựa chọn. Sau nhiều năm chứng
+                                    kiến lượng rác thải nhựa tăng mạnh, ý thức
+                                    bảo vệ môi trường đã chuyển từ nhận thức
+                                    sang hành động thực tế.
+                                </p>
+                                <a href="<%= ctx %>/baibao1.jsp" class="news-readmore">
+                                    Đọc tiếp
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="news-item">
+                            <a href="<%= ctx %>/baibao2.jsp" class="news-thumb">
+                                <img src="<%= ctx %>/images/16-150x150.png" alt="News" />
+                            </a>
+                            <div class="news-body">
+                                <a href="<%= ctx %>/baibao2.jsp" class="news-item-title"
+                                    >5 cách sáng tạo để tái sử dụng chai nhựa</a
+                                >
+                                <p class="news-meta">
+                                    Đăng ngày: 12/11/2025
+                                </p>
+                                <p class="news-excerpt">
+                                    Tìm hiểu 5 cách sáng tạo để tái sử dụng chai
+                                    nhựa trong cuộc sống hàng ngày, giúp bảo vệ
+                                    môi trường và tiết kiệm chi phí.
+                                </p>
+                                <a href="<%= ctx %>/baibao2.jsp" class="news-readmore">
+                                    Đọc tiếp
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </article>
+
+
+                    <!-- Right: sidebar -->
+                    <aside class="news-sidebar">
+                        <div class="news-widget">
+                            <h3 class="news-widget-title">Bài viết nổi bật</h3>
+                            <ul class="news-widget-list">
+                                <li>
+                                    <a href="<%= ctx %>/baibao1.jsp"
+                                        >5 tips chăm sóc vườn xanh bền vững tại
+                                        nhà</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="<%= ctx %>/baibao2.jsp"
+                                        >Lợi ích của phân bón hữu cơ đối với đất
+                                        trồng</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                </section>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="footer__logo">
+                <h5>Về chúng tôi</h5>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nesciunt pariatur accusamus
+                </p>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__title">Thời gian hoạt động</h5>
+                <div class="deliver__time-list">
+                    <div class="delivery__time-item">
+                        <span>Sunday - Thursday</span>
+                        <p>8:00am - 5:00pm</p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Friday - Saturday</span>
+                        <p>8:00am - 2:00pm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__title">Thông tin liên hệ</h5>
+                <div class="deliver__time-list">
+                    <div class="delivery__time-item">
+                        <p>
+                            địa chỉ 1: Khu phố 6, Phường Linh Trung, TP Thủ Đức
+                            ,TP. Hồ Chí Minh
+                        </p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <p>
+                            địa chỉ 2: Khoa công nghệ thông tin, Đại Học Nông
+                            Lâm TP.HCM.
+                        </p>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Phone: 0123456789</span>
+                    </div>
+                    <div class="delivery__time-item">
+                        <span>Email: example@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__title">Đăng ký</h5>
+                <div class="delivery__time-item">
+                    <p>Đăng ký để nhận thông tin mới nhất.</p>
+                </div>
+                <div class="newsletter">
+                    <input type="email" placeholder="Nhập email của bạn" />
+                    <span><i class="ri-send-plane-line"></i></span>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            (function () {
+                const header = document.querySelector(".header");
+                const onScroll = () => {
+                    if (window.scrollY > 80)
+                        header.classList.add("header__shrink");
+                    else header.classList.remove("header__shrink");
+                };
+                window.addEventListener("scroll", onScroll);
+                onScroll();
+            })();
+        </script>
+    </body>
+</html>
