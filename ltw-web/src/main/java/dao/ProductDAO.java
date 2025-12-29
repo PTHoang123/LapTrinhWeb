@@ -77,38 +77,35 @@ public class ProductDAO {
 
 
     public Product getProductById(int id) {
-        LOG.info("[ProductDAO] getProductById() id=" + id);
-
         String sql =
-                "SELECT p.product_id, p.name, p.price, p.description, i.url " +
-                "FROM products p " +
-                "LEFT JOIN products_img i " +
-                "  ON p.product_id = i.product_id AND i.is_primary = 1 " +
-                "WHERE p.product_id = ? " +
-                "LIMIT 1";
-        
-            try (Connection c = Db.getConnection()) {
-                logCurrentDatabase(c);
-            
-            try (PreparedStatement ps = c.prepareStatement(sql)) {
-                ps.setInt(1, id);
-            
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) {
-                        return new Product(
-                            rs.getInt("product_id"),
-                            rs.getString("name"),
-                            rs.getDouble("price"),
-                            rs.getString("url"),
-                            rs.getString("description")
-                        );
-                    }
-                }
+            "SELECT p.product_id AS id, p.name, p.price, " +
+            "       (SELECT pi.url " +
+            "        FROM products_img pi " +
+            "        WHERE pi.product_id = p.product_id " +
+            "        ORDER BY pi.is_primary DESC, pi.sort_order ASC, pi.img_id ASC " +
+            "        LIMIT 1) AS imageUrl " +
+            "FROM products p " +
+            "WHERE p.product_id = ?";
+
+        try (Connection c = Db.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (!rs.next()) return null;
+
+                return new Product(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getDouble("price"),
+                        rs.getString("imageUrl")
+                );
             }
-            } catch (Exception e) {
-                LOG.log(Level.SEVERE, "[ProductDAO] getProductById failed", e);
-            }
-        return null;
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, "[ProductDAO] getProductById failed", e);
+            return null;
+        }
     }
     public int countProducts(String q) {
         LOG.info("[ProductDAO] countProducts(q=" + q + ") called");
@@ -206,5 +203,79 @@ public class ProductDAO {
         for (int i = 0; i < params.size(); i++) {
             ps.setObject(i + 1, params.get(i));
         }
+    }
+
+    public int countActive(Integer categoryId, String q) throws SQLException {
+        StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM products p WHERE p.status='active' ");
+        List<Object> params = new ArrayList<>();
+
+        if (categoryId != null) {
+            sql.append("AND p.category_id = ? ");
+            params.add(categoryId);
+        }
+        if (q != null && !q.isBlank()) {
+            sql.append("AND p.name LIKE ? ");
+            params.add("%" + q.trim() + "%");
+        }
+
+        try (Connection c = Db.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql.toString())) {
+
+            for (int i = 0; i < params.size(); i++) ps.setObject(i + 1, params.get(i));
+            try (ResultSet rs = ps.executeQuery()) {
+                rs.next();
+                return rs.getInt(1);
+            }
+        }
+    }
+
+        public List<Product> findActive(Integer categoryId, String q, String sort, int limit, int offset) throws SQLException {
+        StringBuilder sql = new StringBuilder(
+            "SELECT p.product_id AS id, p.name, p.price, " +
+            "       (SELECT pi.url " +
+            "        FROM products_img pi " +
+            "        WHERE pi.product_id = p.product_id " +
+            "        ORDER BY pi.is_primary DESC, pi.sort_order ASC, pi.img_id ASC " +
+            "        LIMIT 1) AS imageUrl " +
+            "FROM products p " +
+            "WHERE p.status='active' "
+        );
+
+        List<Object> params = new ArrayList<>();
+        if (categoryId != null) {
+            sql.append("AND p.category_id = ? ");
+            params.add(categoryId);
+        }
+        if (q != null && !q.isBlank()) {
+            sql.append("AND p.name LIKE ? ");
+            params.add("%" + q.trim() + "%");
+        }
+
+        if ("price_asc".equals(sort)) sql.append("ORDER BY p.price ASC ");
+        else if ("price_desc".equals(sort)) sql.append("ORDER BY p.price DESC ");
+        else sql.append("ORDER BY p.product_id DESC ");
+
+        sql.append("LIMIT ? OFFSET ? ");
+        params.add(limit);
+        params.add(offset);
+
+        List<Product> out = new ArrayList<>();
+        try (Connection c = Db.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql.toString())) {
+
+            for (int i = 0; i < params.size(); i++) ps.setObject(i + 1, params.get(i));
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    out.add(new Product(
+                            rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getDouble("price"),
+                            rs.getString("imageUrl") // may be null
+                    ));
+                }
+            }
+        }
+        return out;
     }
 }
