@@ -5,25 +5,3 @@ ltw-web/target/
 *.class
 *.war
 
-# Maven build output
-ltw-web/target/
-**/target/
-*.class
-*.war
-
-# Maven build output
-ltw-web/target/
-**/target/
-*.class
-*.war
-
-# Maven build output
-ltw-web/target/
-**/target/
-*.class
-*.war
-
-# Maven build output
-**/target/
-*.class
-*.war
