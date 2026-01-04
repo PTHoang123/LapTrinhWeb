@@ -21,5 +21,9 @@ public class Cart {
         return data.remove(id);
     }
 
-
+    public List<CartItem> deleteAll(){
+        Collection<CartItem> values = data.values();
+        data.clear();
+        return new ArrayList<>(values);
+    }
 }
