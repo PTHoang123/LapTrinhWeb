@@ -1,11 +1,12 @@
 package cart;
 
+import java.io.Serializable;
 import java.util.*;
 
 import service.Product;
 import cart.CartItem;
 
-public class Cart {
+public class Cart implements Serializable {
     Map<Integer, CartItem> data;
 
     public Cart(){
@@ -26,4 +27,10 @@ public class Cart {
         data.clear();
         return new ArrayList<>(values);
     }
+
+    public List<CartItem> getList(){
+        return new ArrayList<>(data.values());
+    }
+
+
 }
