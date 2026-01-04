@@ -2,9 +2,9 @@ package cart;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import service.Product;
-import cart.CartItem;
 
 public class Cart implements Serializable {
     Map<Integer, CartItem> data;
@@ -31,6 +31,14 @@ public class Cart implements Serializable {
     public List<CartItem> getList(){
         return new ArrayList<>(data.values());
     }
+
+    public int getTotalQuantity(){
+         AtomicInteger total = new AtomicInteger();
+        data.values().stream().forEach(p-> {
+            total.addAndGet(p.getQuantity());});
+        return total.get();
+    }
+
 
 
 }
