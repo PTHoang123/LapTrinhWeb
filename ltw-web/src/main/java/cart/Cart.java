@@ -46,6 +46,16 @@ public class Cart implements Serializable {
         return total.get();
     }
 
+    public boolean update(int id, Product p){
+        if (!data.containsKey(id)) {
+            return false;
+        }
 
+        CartItem item = data.get(id);
+        item.setProduct(p);
+        item.setPrice(p.getPrice());
+
+        return true;
+    }
 
 }
