@@ -1,6 +1,6 @@
 package service;
 
-import Dao.ProductDao;
+import dao.ProductDao;
 
 import java.util.List;
 

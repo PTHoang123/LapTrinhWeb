@@ -11,11 +11,17 @@ String ctx = request.getContextPath(); %>
     <body>
         <div class="glass-container">
             <h2>Forgot Password</h2>
-            <form>
+            <form action="forgotpass" method="post">
                 <div class="input-group">
-                    <input type="email" required />
+                    <input type="email" name="email" required />
                     <label>Email Address</label>
                 </div>
+
+                <div class="input-group">
+                <input type="password" name="newPassword" required />
+                <label>new pass</label>
+                </div>
+
                 <p class="info-text">
                     Enter your registered email address and we’ll send you a
                     link to reset your password.
@@ -23,6 +29,9 @@ String ctx = request.getContextPath(); %>
                 <button type="submit" class="forgot-btn">
                     Send Reset Link
                 </button>
+
+                <p style="color:red">${error}</p>
+                <p style="color:green">${success}</p>
 
                 <div class="back-link">
                     <p>

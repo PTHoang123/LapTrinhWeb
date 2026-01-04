@@ -1,3 +1,5 @@
+package dao;
+
 import java.sql.*;
 import model.User;
 import util.DBConnect;

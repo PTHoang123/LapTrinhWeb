@@ -1,4 +1,4 @@
-package Product;
+package controller;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

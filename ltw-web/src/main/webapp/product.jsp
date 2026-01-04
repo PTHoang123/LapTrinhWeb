@@ -48,7 +48,7 @@
                     >Danh mục</a
                     >
                     <a
-                            href="<%= ctx %>/product.jsp"
+                            href="<%= ctx %>/ListProduct"
                             class="menu__item active__menu"
                     >Sản phẩm</a
                     >
