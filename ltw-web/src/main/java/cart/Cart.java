@@ -3,6 +3,7 @@ package cart;
 import java.io.Serializable;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 import service.Product;
 
@@ -36,6 +37,12 @@ public class Cart implements Serializable {
          AtomicInteger total = new AtomicInteger();
         data.values().stream().forEach(p-> {
             total.addAndGet(p.getQuantity());});
+        return total.get();
+    }
+
+    public double getTotal(){
+        AtomicReference<Double> total = new AtomicReference<>((double) 0);
+        data.values().forEach(p-> total.updateAndGet(v -> (v+(p.getQuantity() * (p.getPrice())))));
         return total.get();
     }
 
