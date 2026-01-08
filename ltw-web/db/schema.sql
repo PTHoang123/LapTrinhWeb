@@ -4,13 +4,13 @@ CREATE DATABASE ltw CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE ltw;
 
 -- ============ USERS ============
-CREATE TABLE IF NOT EXISTS `user` (
-  user_id INT AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(255) NOT NULL,
-  status ENUM('active','blocked','delete') NOT NULL DEFAULT 'active',
-  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  UNIQUE KEY uq_user_email (email)
+CREATE TABLE IF NOT EXISTS users (
+  user_id        INT AUTO_INCREMENT PRIMARY KEY,
+  email          VARCHAR(255) NOT NULL UNIQUE,
+  password_hash  VARCHAR(255) NOT NULL,
+  full_name      VARCHAR(255) NOT NULL,
+  role           ENUM('user','admin') NOT NULL DEFAULT 'user',
+  created_at     TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- ============ CATEGORIES ============

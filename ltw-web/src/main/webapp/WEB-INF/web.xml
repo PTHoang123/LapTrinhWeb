@@ -84,4 +84,30 @@
         <servlet-name>AdminProductListServlet</servlet-name>
         <url-pattern>/admin/products</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SignupServlet</servlet-name>
+        <servlet-class>controller.SignupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>SignupServlet</servlet-name>
+      <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>SigninServlet</servlet-name>
+      <servlet-class>controller.SigninServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>SigninServlet</servlet-name>
+      <url-pattern>/signin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>LogoutServlet</servlet-name>
+      <servlet-class>controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>LogoutServlet</servlet-name>
+      <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
 </web-app>
