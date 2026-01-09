@@ -524,3 +524,105 @@ a {
         align-items: flex-start;
     }
 }
+
+/* ========== Modal (Add Product) ========== */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 8vh 16px 16px;
+    z-index: 99999;
+}
+
+.modal--open {
+    display: flex;
+}
+
+.modal__dialog {
+    width: 100%;
+    max-width: 640px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal__title {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #212245;
+}
+
+.modal__close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 10px;
+    background: #f3f4f6;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+    color: #212245;
+}
+
+.modal__close:hover {
+    background: #e5e7eb;
+}
+
+.modal__body {
+    padding: 16px;
+}
+
+.modal__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 16px 16px;
+    border-top: 1px solid #eee;
+}
+
+/* Form layout inside modal */
+.admin-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.admin-form__field--full {
+    grid-column: 1 / -1;
+}
+
+.admin-form__label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.admin-textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #dcdfe6;
+    font-size: 0.9rem;
+    outline: none;
+    resize: vertical;
+}
+
+.admin-textarea:focus {
+    border-color: #88bf3d;
+    box-shadow: 0 0 0 1px rgba(136, 191, 61, 0.3);
+}
