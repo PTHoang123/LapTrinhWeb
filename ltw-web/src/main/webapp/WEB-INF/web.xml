@@ -110,4 +110,12 @@
       <servlet-name>LogoutServlet</servlet-name>
       <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    <servlet>
+      <servlet-name>AdminProductAddServlet</servlet-name>
+      <servlet-class>controller.AdminProductAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminProductAddServlet</servlet-name>
+        <url-pattern>/admin/products/add</url-pattern>
+    </servlet-mapping>
 </web-app>
