@@ -82,11 +82,72 @@ request.getContextPath(); %>
                             <button class="btn btn-primary admin-btn-add">
                                 Tổng doanh thu
                             </button>
-                            <button class="btn btn-primary admin-btn-add">
+                            <button class="btn btn-primary admin-btn-add" id="btnAddProduct">
                                 <i class="ri-add-line"></i>
                                 Thêm sản phẩm
                             </button>
                         </div>
+
+                        <div class="modal" id="addProductModal" aria-hidden="true">
+                            <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="addProductTitle">
+                                <div class="modal__header">
+                                    <h3 id="addProductTitle" class="modal__title">Thêm sản phẩm</h3>
+                                    <button type="button" class="modal__close" id="btnCloseAdd" aria-label="Close">×</button>
+                                </div>
+                                <div class="modal__body">
+                                    <form  class="admin-form"
+                                            method="post"
+                                            action="<%= ctx %>/admin/products/add"
+                                            enctype="multipart/form-data">
+                                        <div class="admin-form__grid">
+                                            <div class="admin-form__field">
+                                                <label class="admin-form__label">Category ID</label>
+                                                <input class="admin-input" name="categoryId" type="number" min="1" required />
+                                            </div>
+
+                                            <div class="admin-form__field">
+                                                <label class="admin-form__label">Tên sản phẩm</label>
+                                                <input class="admin-input" name="name" required />
+                                            </div>
+
+                                            <div class="admin-form__field">
+                                                <label class="admin-form__label">Slug (optional)</label>
+                                                <input class="admin-input" name="slug" placeholder="auto if empty" />
+                                            </div>
+
+                                            <div class="admin-form__field admin-form__field--full">
+                                                <label class="admin-form__label">Mô tả (optional)</label>
+                                                <textarea class="admin-textarea" name="description" rows="4"></textarea>
+                                            </div>
+
+                                            <div class="admin-form__field">
+                                                <label class="admin-form__label">Giá</label>
+                                                <input class="admin-input" name="price" type="number" min="0" step="0.01" required />
+                                            </div>
+
+                                            <div class="admin-form__field">
+                                                <label class="admin-form__label">Trạng thái</label>
+                                                <select class="admin-select" name="status">
+                                                    <option value="active">active</option>
+                                                    <option value="archived">archived</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="admin-form__field admin-form__field--full">
+                                                <label class="admin-form__label">Image file</label>
+                                                <input class="admin-input" type="file" name="imageFile" accept="image/*" />
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="modal__footer">
+                                            <button type="button" class="btn btn-outline" id="btnCancelAdd">Hủy</button>
+                                            <button type="submit" class="btn btn-primary">Lưu</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="admin-filters">
                         <form method="get" action="<%= ctx %>/admin/products" class="admin-filters__left" style="display:flex; gap:12px; flex-wrap:wrap;">
@@ -133,17 +194,17 @@ request.getContextPath(); %>
                                         <td>#<c:out value="${p.id}"/></td>
                                         <td>
                                             <c:choose>
-                                            <c:when test="${not empty p.imageUrl}">
-                                                <img src="<%= ctx %>/<c:out value='${p.imageUrl}'/>" alt="Product" class="admin-table__thumb" />
-                                            </c:when>
-                                            <c:otherwise>
-                                                <img src="<%= ctx %>/assets/placeholder.png" alt="No image" class="admin-table__thumb" />
-                                            </c:otherwise>
-                                        </c:choose>
+                                              <c:when test="${not empty p.imageUrl}">
+                                                <img src="${pageContext.request.contextPath}${p.imageUrl}" alt="<c:out value='${p.name}'/>" class="admin-table__thumb" />
+                                              </c:when>
+                                              <c:otherwise>
+                                                <img src="${pageContext.request.contextPath}/assets/images/no-image.png" alt="No image" />
+                                              </c:otherwise>
+                                            </c:choose>
                                         </td>
                                         <td><c:out value="${p.name}"/></td>
                                     
-                                        <!-- You don't have these fields in Product model yet -->
+
                                         <td>-</td>
                                         <td>
                                             <fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/>đ
@@ -183,7 +244,7 @@ request.getContextPath(); %>
                                         </button>
                                     </c:otherwise>
                                 </c:choose>
-                      
+
                                 <div class="admin-pagination__pages">
                                     <c:forEach var="i" begin="1" end="${totalPages}">
                                         <a class="page-btn ${i == currentPage ? 'active' : ''}"
@@ -281,6 +342,38 @@ request.getContextPath(); %>
                 };
                 window.addEventListener("scroll", onScroll);
                 onScroll();
+            })();
+            (function () {
+                const modal = document.getElementById('addProductModal');
+                const openBtn = document.getElementById('btnAddProduct');
+                const closeBtn = document.getElementById('btnCloseAdd');
+                const cancelBtn = document.getElementById('btnCancelAdd');
+
+                function open() {
+                    if (!modal) return;
+                    modal.classList.add('modal--open');
+                    modal.setAttribute('aria-hidden', 'false');
+                }
+            
+                function close() {
+                    if (!modal) return;
+                    modal.classList.remove('modal--open');
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            
+                if (openBtn) openBtn.addEventListener('click', open);
+                if (closeBtn) closeBtn.addEventListener('click', close);
+                if (cancelBtn) cancelBtn.addEventListener('click', close);
+            
+                if (modal) {
+                    modal.addEventListener('click', function (e) {
+                        if (e.target === modal) close();
+                    });
+                }
+            
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
             })();
         </script>
     </body>
