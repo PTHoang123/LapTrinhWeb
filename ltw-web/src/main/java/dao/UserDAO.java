@@ -6,7 +6,23 @@ import util.DBConnect;
 
 
 public class UserDAO {
-public static User login(String email, String password) {
+
+    public static boolean emailExists(String email) {
+        String sql = "SELECT id FROM user WHERE email=?";
+        try (Connection con = DBConnect.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static User login(String email, String password) {
 String sql = "SELECT * FROM user WHERE email=? AND pass=?";
 try (Connection con = DBConnect.getConnection();
 PreparedStatement ps = con.prepareStatement(sql)) {
