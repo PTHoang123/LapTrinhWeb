@@ -1,25 +1,31 @@
+package controller;
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 import dao.UserDAO;
 import model.User;
+import service.AuthService;
 
 
 public class LoginServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("login.jsp").forward(request, response);
+    }
+
 protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 throws ServletException, IOException {
 
 
 String email = req.getParameter("email");
 String password = req.getParameter("password");
+AuthService as = new AuthService();
 
+User u = UserDAO.login(email, password);
 
-User user = UserDAO.login(email, password);
-
-
-if (user != null) {
+if (u!=null) {
 HttpSession session = req.getSession();
-session.setAttribute("user", user);
+session.setAttribute("user", u);
 resp.sendRedirect("home.jsp");
 } else {
 req.setAttribute("error", "Sai email hoặc mật khẩu");

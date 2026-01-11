@@ -34,7 +34,7 @@ body {
     backdrop-filter: blur(15px);
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 25px 45px rbga(0, 0, 0, 0.4);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
     z-index: 10;
     overflow: hidden;
 }
@@ -59,7 +59,7 @@ body {
     text-align: center;
     letter-spacing: 1px;
     margin-bottom: 40px;
-    text-shadow: 0 2px 4px rbga(0, 0, 0, 0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .input-group {
     position: relative;
@@ -74,15 +74,15 @@ body {
     border-radius: 35px;
     font-size: 16px;
     color: #fff;
-    box-shadow: 0 5px 15px rbga(0, 0, 0, 0.04);
-    transition: all 0.3 ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
 }
 .input-group input::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 .input-group input:focus {
     background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 20px rbga(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 .input-group label {
     position: absolute;
@@ -124,7 +124,7 @@ body {
 .remember-forgot a {
     color: #fff;
     text-decoration: none;
-    transition: all 0.3 ease;
+    transition: all 0.3s ease;
 }
 .remember-forgot a:hover {
     text-decoration: underline;
@@ -139,13 +139,13 @@ body {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3 ease;
-    box-shadow: 0 5px 15px rbga(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 .login-btn:hover {
     background: rgba(255, 255, 255, 0.4);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rbga(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 .regiter-link {
     text-align: center;

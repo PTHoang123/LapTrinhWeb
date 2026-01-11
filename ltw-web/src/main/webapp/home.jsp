@@ -47,6 +47,10 @@ String ctx = request.getContextPath(); %>
                                 >Thanh toán</a
                             >
                             <a href="<%= ctx %>//faq.jsp" class="menu__item">FAQ</a>
+
+                            <a href="<%= ctx %>//login.jsp" class="menu__item"
+                            >Login</a
+                            >
                         </div>
                     </div>
 

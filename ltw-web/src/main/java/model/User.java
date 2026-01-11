@@ -3,13 +3,16 @@ package model;
 public class User {
 private int id;
 private String email;
+private String pass;
 private String fullname;
 private String role;
 
     public User(){};
-    public User(int id, String email, String fullname, String role) {
+
+    public User(int id, String email, String pass, String fullname, String role) {
         this.id = id;
         this.email = email;
+        this.pass = pass;
         this.fullname = fullname;
         this.role = role;
     }
@@ -29,6 +32,10 @@ private String role;
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPass() {return pass;}
+
+    public void setPass(String pass) {this.pass = pass;}
 
     public String getFullname() {
         return fullname;
