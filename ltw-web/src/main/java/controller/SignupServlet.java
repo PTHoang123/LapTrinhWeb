@@ -23,6 +23,15 @@ public class SignupServlet extends HttpServlet {
 
         System.out.println("EMAIL = [" + email + "]");
 
+        // Regex kiểm tra mật khẩu mạnh
+        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=?]).{8,}$";
+
+        if (!password.matches(pattern)) {
+            req.setAttribute("error", "Mật khẩu phải ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt");
+            req.getRequestDispatcher("signup.jsp").forward(req, resp);
+            return;
+        }
+
         String confirmPassword = req.getParameter("confirmPassword");
         if (!password.equals(confirmPassword)) {
             req.setAttribute("error", "Mật khẩu xác nhận không khớp");

@@ -24,6 +24,7 @@
                 </div>
                 <div class="input-group">
                     <input type="password" name="password" required />
+                    <small>Password phải ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt</small>
                     <label>Password</label>
                 </div>
                 <div class="input-group">
