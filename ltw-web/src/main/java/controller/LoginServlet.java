@@ -5,7 +5,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import dao.UserDAO;
 import model.User;
-import service.AuthService;
+
 
 
 public class LoginServlet extends HttpServlet {
@@ -16,10 +16,8 @@ public class LoginServlet extends HttpServlet {
 protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 throws ServletException, IOException {
 
-
 String email = req.getParameter("email");
 String password = req.getParameter("password");
-AuthService as = new AuthService();
 
 User u = UserDAO.login(email, password);
 

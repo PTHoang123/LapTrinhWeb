@@ -7,7 +7,7 @@ import util.DBConnect;
 
 public class UserDAO {
 public static User login(String email, String password) {
-String sql = "SELECT * FROM users WHERE email=? AND password=?";
+String sql = "SELECT * FROM user WHERE email=? AND pass=?";
 try (Connection con = DBConnect.getConnection();
 PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -32,7 +32,7 @@ return null;
 }
 
 public static boolean register(String fullname, String email, String password) {
-    String sql = "INSERT INTO users(fullname,email,password) VALUES(?,?,?)";
+    String sql = "INSERT INTO user(fullname,email,pass) VALUES(?,?,?)";
     try (Connection con = DBConnect.getConnection();
          PreparedStatement ps = con.prepareStatement(sql)) {
         ps.setString(1, fullname);
@@ -45,7 +45,7 @@ public static boolean register(String fullname, String email, String password) {
 }
 
 public static boolean updatePassword(String email, String password) {
-    String sql = "UPDATE users SET password=? WHERE email=?";
+    String sql = "UPDATE user SET pass=? WHERE email=?";
     try (Connection con = DBConnect.getConnection();
          PreparedStatement ps = con.prepareStatement(sql)) {
         ps.setString(1, password);
