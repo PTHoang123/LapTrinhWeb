@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%
-String ctx = request.getContextPath(); %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<% String ctx = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,15 +9,15 @@ String ctx = request.getContextPath(); %>
     <body>
         <div class="glass-container">
             <h2>Sign Up</h2>
-            <form action="signup" method="post">
-                <div class="input-group">
+            <form action="<%= ctx %>/signup" method="post">
+            <div class="input-group">
                     <input type="text" name="fullname" required />
                     <label>Full Name</label>
                 </div>
-                <div class="input-group">
-                    <input type="tel" name="phone" required />
-                    <label>Phone Number</label>
-                </div>
+<%--                <div class="input-group">--%>
+<%--                    <input type="tel" name="phone" required />--%>
+<%--                    <label>Phone Number</label>--%>
+<%--                </div>--%>
                 <div class="input-group">
                     <input type="email" name="email" required />
                     <label>Email</label>
@@ -27,7 +27,7 @@ String ctx = request.getContextPath(); %>
                     <label>Password</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" required />
+                    <input type="password" name="confirmPassword" required />
                     <label>Confirm Password</label>
                 </div>
 
