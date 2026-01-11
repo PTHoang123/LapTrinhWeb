@@ -8,7 +8,7 @@ import util.DBConnect;
 public class UserDAO {
 
     public static boolean emailExists(String email) {
-        String sql = "SELECT 1 FROM users WHERE email = ?";
+        String sql = "SELECT 1 FROM user WHERE email = ?";
         try (Connection con = DBConnect.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -57,6 +57,7 @@ public static boolean register(String fullname, String email, String password) {
         ps.setString(3, password);
         return ps.executeUpdate() > 0;
     } catch (Exception e) {
+        e.printStackTrace(); // hiển thị lỗi để biết lý do thất bại
         return false;
     }
 }

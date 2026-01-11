@@ -27,7 +27,7 @@
                     <label>Password</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" required />
+                    <input type="password" name="confirmPassword" required />
                     <label>Confirm Password</label>
                 </div>
 
