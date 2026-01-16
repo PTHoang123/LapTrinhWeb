@@ -2,9 +2,9 @@ package controller;
 
 import dao.AdminProductDAO;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.http.*;
 import java.io.*;
 import java.math.BigDecimal;
 import java.nio.file.Files;
