@@ -3,8 +3,8 @@ package controller;
 import dao.CategoryDAO;
 import model.Category;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
